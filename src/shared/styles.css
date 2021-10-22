@@ -1,0 +1,42 @@
+.d-flex-default {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 32px auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.rounded-circle {
+  height: 50px;
+  width: 50px;
+  border-radius: 50% !important;
+  margin: 0 4px;
+}
+
+.w-100, .table-responsive {
+  width: 100%;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mx-3{
+  margin: 0 16px; 
+}

@@ -1,0 +1,9 @@
+.img-thumbnail {
+    margin: 25px auto;
+    width: 85%;
+    height: 85%;
+}
+
+.px-4 {
+    margin: 0 24px !important;
+}

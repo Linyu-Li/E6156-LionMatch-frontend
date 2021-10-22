@@ -1,0 +1,9 @@
+@import "../node_modules/react-image-gallery/styles/css/image-gallery.css";
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #f3f3f3;
+}

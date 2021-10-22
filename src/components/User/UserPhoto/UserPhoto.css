@@ -1,0 +1,23 @@
+nav img {
+    height: 40px;
+    width: 40px;
+    margin: -15px -10px;
+    border: 2px solid #fafafa;
+}
+
+.navbar-inverse .navbar-nav.navbar-right:last-of-type > li:hover, 
+.navbar-inverse .navbar-nav.navbar-right:last-of-type > li:active {
+    background-color: transparent;
+    border-bottom: none;    
+}
+
+@media (max-width: 768px) { 
+
+    .navbar-inverse .navbar-nav.navbar-right:last-of-type {
+        display: none;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+        background-color: #fafafa;
+    }
+}

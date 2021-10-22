@@ -1,0 +1,37 @@
+.background {
+  /* background-image: url("../../assets/"); */
+  background-color: #9BCBEB;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 94.5vh;
+  width: 100%;
+  position: relative;
+}
+
+.register_text {
+  position: absolute;
+  right: 15%;
+  bottom: 50%;
+  margin-top: 48px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.text {
+  font-weight: bold;
+  color: #262626;
+}
+
+@media (max-width: 100rem) {
+  .background {
+    /* background-color: ; */
+    background-position: bottom center;
+  }
+  .register_text {
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -10%);
+    width: 100%;
+  }
+}

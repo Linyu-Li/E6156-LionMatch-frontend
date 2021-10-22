@@ -1,0 +1,20 @@
+.navbar-form .form-group,
+.btn.btn-success {
+    margin: 0 4px;
+}
+
+@media (max-width: 768px) { 
+
+    .navbar-inverse .navbar-form {
+        border: none;
+    }
+
+    .navbar-form .form-group {
+        margin: 8px 0;
+    }
+
+    .btn.btn-success {
+        margin: 0 0 24px;
+        float: right;
+    }
+}

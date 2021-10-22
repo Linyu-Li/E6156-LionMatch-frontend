@@ -1,0 +1,29 @@
+.img-wrapper {
+    width: 60%;
+    margin: auto;
+    padding-top: 16px;
+}
+
+.bg-light {
+    background-color: white;
+}
+
+#tab {
+    padding: 24px;
+}
+
+.d-flex .btn.btn-success {
+    margin: 0;
+}
+
+@media (min-width: 992px) {
+    .mx-3 {
+        margin: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .text-position {
+        text-align: center;
+    }
+}

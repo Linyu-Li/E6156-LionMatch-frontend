@@ -1,0 +1,33 @@
+#tab-pane-4 .card-body {
+  padding-top: 16px !important;
+  overflow-y: scroll;
+  height: 400px;
+}
+
+#tab-pane-4 .card-footer {
+  background-color: #f3f3f3;
+}
+
+#tab-pane-4 input {
+  flex-grow: 1;
+}
+
+#tab-pane-4 .list-group-item {
+  border-bottom: 1px dotted #b3a9a9;
+}
+
+.chat {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chat li {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #b3a9a9;
+}
+
+.message-padding {
+  padding-left: 56px;
+}

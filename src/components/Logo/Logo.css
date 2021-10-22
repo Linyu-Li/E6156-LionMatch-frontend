@@ -1,0 +1,14 @@
+.navbar-inverse .navbar-brand {
+    color: #fafafa;
+    font-weight: bold;
+}
+
+.navbar-brand svg {
+    margin-right: 4px;
+}
+
+.navbar-inverse .navbar-brand:focus, 
+.navbar-inverse .navbar-brand:hover {
+    background-color: transparent;
+    color: #fafafa;
+}
