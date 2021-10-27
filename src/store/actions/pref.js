@@ -56,6 +56,7 @@ export const updatePref = (pref) => {
         const prefId = pref.prefId;
         const data = { profile: pref };
         if (prefId !== undefined && prefId !== null) {
+            delete data.profile.prefId;
             axios.put(USER_PREF_URL + `/${prefId}`, data)
                 .then((res) => {
                     dispatch(updatePrefSuccess(res.data));
