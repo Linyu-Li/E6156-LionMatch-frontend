@@ -1,0 +1,23 @@
+.background div.col-lg-6 {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -20%);
+    background-color: #fafafa;
+    border-radius: 4px;
+    padding: 16px;
+}
+
+.background h2 {
+    text-align: center;
+    font-weight: bold;
+    color: #d70000;
+}
+
+.background form {
+    padding: 0px 20px 20px;
+}
+
+.background .control-label {
+    display: block;
+}
