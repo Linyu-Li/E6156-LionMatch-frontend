@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter, BrowserRouter as Router} from 'react-router-dom';
 import './App.css';
 import Logout from './containers/Auth/Logout/Logout';
 import AdminTool from './containers/AdminTool/AdminTool';
@@ -9,6 +9,9 @@ import Lists from './containers/Lists/Lists';
 import Matches from './containers/Matches/Matches';
 import Messages from './containers/Messages/Messages';
 import UserDetails from './containers/User/UserDetails/UserDetails';
+import timeSlot from './containers/timeSlot/timeSlot';
+import { TimePage } from "./containers/TimeSlot";
+import { Detail } from "./containers/detailView";
 import Layout from './hoc/Layout/Layout';
 import * as actions from './store/actions/index';
 import Admin from './containers/AdminTool/AdminTool'
@@ -17,39 +20,47 @@ import AddUser from './containers/AdminTool/func/AddUser';
 
 class App extends Component {
 
+
+
   componentDidMount () {
     this.props.onTryAutoSignup();
   }
 
   render() {
-    
+    //<Route path="/:id" /> <Detail/>
     let routes = (
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Redirect to="/" />
-      </Switch>
-    );
-    console.log("this.props.isAuthenticated: " + this.props.isAuthenticated);
-    // if ( this.props.isAuthenticated ) {
-    if ( true ) {
-      routes = (
         <Switch>
-          <Route path="/AdminTool" exact component={AdminTool} />
-          <Route path="/AdminTool/add" component={AddUser} />
-          <Route path="/matches" component={Matches} />
-          <Route path="/lists" component={Lists} />
-          <Route path="/logout" component={Logout} />
-          <Route path="/messages" component={Messages} />
-          <Route path="/users/:userId" component={UserDetails}/>
-          <Route path="/" exact component={Home} />
+          <Route path="/" component={Home}/>
           <Redirect to="/" />
         </Switch>
+    );
+    // console.log("this.props.isAuthenticated: " + this.props.isAuthenticated);
+    // if ( this.props.isAuthenticated ) {
+    //  //
+    if ( true ) {
+       routes = (
+        <Switch>
+            <Route path="/:id" component={Detail} />
+            <Route path="/"><TimePage/></Route>
+          {/*<Route path="/AdminTool" exact component={AdminTool} />*/}
+          {/*<Route path="/AdminTool/add" component={AddUser} />*/}
+          {/*<Route path="/matches" component={Matches} />*/}
+          {/*<Route path="/lists" component={Lists} />*/}
+          {/*<Route path="/logout" component={Logout} />*/}
+          {/*<Route path="/messages" component={Messages} />*/}
+          {/*<Route path="/users/:userId" component={UserDetails}/>*/}
+          {/*<Route path="/timeSlot" component={timeSlot}/>*/}
+          <Redirect to="/" />
+        </Switch>
+
       );
     }
 
     return (
       <Layout>
-        {routes}
+
+          {routes}
+
       </Layout>
     );
   }
