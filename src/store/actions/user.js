@@ -8,9 +8,10 @@ export const userRegisterStart = () => {
     };
 };
 
-export const userRegisterSuccess = (token, user) => {
+export const userRegisterSuccess = (response) => {
     return {
-        type: actionTypes.USER_REGISTER_SUCCESS
+        type: actionTypes.USER_REGISTER_SUCCESS,
+        response
     };
 };
 
@@ -25,7 +26,7 @@ export const register = (userData) => {
     return dispatch => {
         // userData.preventDefault();
         dispatch(userRegisterStart());
-        let url = 'http://localhost:3006/users';
+        let url = 'http://localhost:5000/users';
         // let url = process.env.REACT_APP_API_URL;
         axios.post(url, userData)
             .then(response => {
@@ -35,6 +36,19 @@ export const register = (userData) => {
                 dispatch(userRegisterFail(err));
             });
     };
+};
+
+export const register2 = (userData) => {
+    return new Promise((resolve, reject) => {
+        const url = 'http://localhost:5000/users';
+        axios.post(url, userData)
+            .then(response => {
+                return resolve(userRegisterSuccess(response.data));
+            })
+            .catch(err => {
+                reject(userRegisterFail(err));
+            });
+    })
 };
 
 export const getUsersSuccess = (paginatedResult) => {

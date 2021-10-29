@@ -11,10 +11,10 @@ class Auth extends Component {
 
     state = {
         controls: {
-            username: {
+            email: {
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Username'
+                    placeholder: 'Email'
                 },
                 value: '',
                 validation: {
@@ -48,7 +48,7 @@ class Auth extends Component {
 
     submitHandler = ( event ) => {
         event.preventDefault();
-        this.props.onAuth( this.state.controls.username.value, this.state.controls.password.value );
+        this.props.onAuth( this.state.controls.email.value, this.state.controls.password.value );
     }
 
     render() {
@@ -80,7 +80,7 @@ class Auth extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: ( username, password ) => dispatch( actions.auth( username, password ) ),
+        onAuth: ( email, password ) => dispatch( actions.auth( email, password ) ),
     };
 };
 

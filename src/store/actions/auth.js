@@ -31,21 +31,23 @@ export const logout = () => {
     };
 };
 
-export const auth = (username, password) => {
+export const auth = (email, password) => {
     return dispatch => {
         dispatch(authStart());
         const authData = {
-            username: username,
+            email: email,
             password: password
         };
-        let url = 'http://localhost:3006/users';
+        let url = 'http://localhost:5000/auth';
         axios.post(url, authData)
             .then(response => {
+                window.alert(`Got token: ${response.data.token}`)
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 dispatch(authSuccess(response.data.token, JSON.stringify(response.data.user)));
             })
             .catch(err => {
+                window.alert(err.response.data);    // should show message defined in auth() in app.py
                 dispatch(authFail(err));
             });
     };
