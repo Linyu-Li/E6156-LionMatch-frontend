@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter, BrowserRouter as Router} from 'react-router-dom';
 import './App.css';
 import Logout from './containers/Auth/Logout/Logout';
 import AdminTool from './containers/AdminTool/AdminTool';
@@ -10,6 +10,9 @@ import Matches from './containers/Matches/Matches';
 import Messages from './containers/Messages/Messages';
 import UserDetails from './containers/User/UserDetails/UserDetails';
 import UserPref from "./containers/UserPref/UserPref";
+import timeSlot from './containers/timeSlot/timeSlot';
+import { TimePage } from "./containers/TimeSlot";
+import { Detail } from "./containers/detailView";
 import Layout from './hoc/Layout/Layout';
 import * as actions from './store/actions/index';
 import Admin from './containers/AdminTool/AdminTool'
@@ -44,6 +47,8 @@ class App extends Component {
                     <Route path="/users/:userId" component={UserDetails}/>
                     <Route path="/preference/:urlPrefId" component={UserPref}/>
                     <Route path="/preference" component={UserPref}/>
+                    <Route path="/api/userAvail/:uid/:id" component={Detail} />
+                    <Route path="/api/userAvail/:uid" component={TimePage} />
                     <Route path="/" exact component={Home}/>
                     <Redirect to="/"/>
                 </Switch>
@@ -68,7 +73,6 @@ class App extends Component {
     //             ) : (
     //               Object.keys(pages).map((pageKey): * => {
     //                 const { path, component, exact, requireAuth, requireAdmin, showNavBar } = pages[pageKey]
-
     //                 // Apply a middleware-style HOC wrapping algorithm to determine
     //                 // the exact component to render
     //                 let componentToRender = component

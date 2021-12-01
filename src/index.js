@@ -11,6 +11,7 @@ import thunk from 'redux-thunk';
 import authReducer from './store/reducers/auth';
 import userReducer from './store/reducers/user';
 import prefReducer from "./store/reducers/pref";
+import * as root from "react-dom";
 
 // const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 const composeEnhancers = (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) || compose;
@@ -34,6 +35,7 @@ const app = (
 );
 
 ReactDOM.render(app, document.getElementById('root'));
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
