@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Card } from "../containers/cards";
 import { Form } from "../containers/form";
 
-export const TimePage = () => {
+export const TimePage = (props) => {
+    const uid  = props.match.params.uid;
     const [time, setTime] = useState([]);
     const [addTime, setAddTime] = useState({
         Id:"",
@@ -12,17 +13,18 @@ export const TimePage = () => {
         StartTime:"",
         EndTime:""
     });
+    console.log(uid)
 
     useEffect(() => {
         // Fetch the list of times API
-        fetch("http://127.0.0.1:5000/timeSlot")
+        fetch(`http://127.0.0.1:5000/api/availability/users/${uid}`)
             .then((response) => {
                 if (response.ok) {
                     return response.json();
                 }
             })
             .then((data) => setTime(data));
-    }, []);
+    }, [uid]);
 
     const handleFormChange = (e) => {
         setAddTime({
@@ -33,10 +35,10 @@ export const TimePage = () => {
 
     const handleFormSubmit = () => {
         // Creates time suing the API
-        fetch("http://127.0.0.1:5000/timeSlot", {
+        fetch(`http://127.0.0.1:5000/api/availability/users/${uid}`, {
             method: "POST",
             body: JSON.stringify({
-                Id: addTime.Id,
+                // Id: addTime.Id,
                 Year: addTime.Year,
                 Month: addTime.Month,
                 Day: addTime.Day,
@@ -64,7 +66,7 @@ export const TimePage = () => {
 
     const getUpdate = () => {
         // Automatically update the list as you submit the form
-        fetch("http://127.0.0.1:5000/timeSlot")
+        fetch(`http://127.0.0.1:5000/api/availability/users/${uid}`)
             .then((response) => {
                 if (response.ok) {
                     return response.json();
@@ -80,7 +82,7 @@ export const TimePage = () => {
                 onFormChange={handleFormChange}
                 onFormSubmit={handleFormSubmit}
             />
-            <Card listOfTime={time} />
+            <Card listOfTime={time} uid ={props.match.params.uid}/>
         </>
     );
 };

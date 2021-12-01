@@ -24,10 +24,10 @@ export const Form = ({input, onFormChange, onFormSubmit}) => {
         // </>
         <>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label> Id </label>
-                    <input className='form-class' name="Id" type='text' required value={input.Id} onChange={handleChange}></input>
-                </div>
+                {/*<div>*/}
+                {/*    <label> Id </label>*/}
+                {/*    <input className='form-class' name="Id" type='text' required value={input.Id} onChange={handleChange}></input>*/}
+                {/*</div>*/}
                 <div>
                     <label>Year</label>
                     <input className='form-class' name="Year" type='text' required value={input.Year} onChange={handleChange}></input>

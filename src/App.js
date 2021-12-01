@@ -40,8 +40,10 @@ class App extends Component {
     if ( true ) {
        routes = (
         <Switch>
-            <Route path="/:id" component={Detail} />
-            <Route path="/"><TimePage/></Route>
+            <Route path="/api/userAvail/:uid/:id" component={Detail} />
+            <Route path="/api/userAvail/:uid" component={TimePage} />
+
+
           {/*<Route path="/AdminTool" exact component={AdminTool} />*/}
           {/*<Route path="/AdminTool/add" component={AddUser} />*/}
           {/*<Route path="/matches" component={Matches} />*/}

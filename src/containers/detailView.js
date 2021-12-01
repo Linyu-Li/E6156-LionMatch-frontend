@@ -8,6 +8,7 @@ import { Form } from "../containers/form";
 export const Detail = (props) => {
     //const history = useHistory();
     const id  = props.match.params.id;
+    const uid  = props.match.params.uid;
     const [time, setTime] = useState([]);
     const [updateTime, setUpdateTime] = useState({
         Id:"",
@@ -19,9 +20,10 @@ export const Detail = (props) => {
     });
 
     console.log(id)
+    console.log(uid)
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:5000/timeSlot/${id}`)
+        fetch(`http://127.0.0.1:5000/api/timeSlot/${id}`)
 
             .then((response) => response.json())
             .then((data) => setTime(data));
@@ -35,10 +37,10 @@ export const Detail = (props) => {
     };
 
     const handleFormSubmit = () => {
-        fetch(`http://127.0.0.1:5000/timeSlot/${id}`, {
+        fetch(`http://127.0.0.1:5000/api/availability/users/${uid}/${id}`, {
             method: "PUT",
             body: JSON.stringify({
-                Id: updateTime.Id,
+                // Id: updateTime.Id,
                 Year: updateTime.Year,
                 Month: updateTime.Month,
                 Day: updateTime.Day,
@@ -51,7 +53,7 @@ export const Detail = (props) => {
         })
 //            .then((response) => response.json())
             .then((message) => {
-                props.history.push("/");
+                props.history.push("/api/userAvail/"+props.match.params.uid);
             })
 
     };
@@ -68,9 +70,9 @@ export const Detail = (props) => {
                 <div key="id">Detail: {data.Year} -  {data.Month} -  {data.Day}  {data.StartTime} -  {data.EndTime}</div>
             ))}
             <br />
-            <Delete id={id} props = {props}/><p>Fill the above to update</p>
+            <Delete id={id} uid={props.match.params.uid} props = {props}/><p>Fill the above to update</p>
             &nbsp;&nbsp;
-            <Link to="/">Go Back to List</Link>
+            <Link to = {'/api/userAvail/'+props.match.params.uid }>Go Back to List</Link>
         </div>
     );
 };
