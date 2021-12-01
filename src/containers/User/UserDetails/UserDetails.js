@@ -57,12 +57,12 @@ class UserDetails extends Component {
         let userInfo = null;
         if (this.props.userDetail) {
 
-            const images = this.props.userDetail.photos.map(photo => {
-                return {
-                    original: photo.url,
-                    thumbnail: photo.url
-                }
-            });
+            // const images = this.props.userDetail.photos.map(photo => {
+            //     return {
+            //         original: photo.url,
+            //         thumbnail: photo.url
+            //     }
+            // });
 
             userInfo = (
                 <Row>
@@ -92,7 +92,7 @@ class UserDetails extends Component {
                                     </Tab>
                                     <Tab eventKey={3} title="Photos">
                                         <div className="img-wrapper">
-                                            <ImageGallery items={images}/>
+                                            {/*<ImageGallery items={images}/>*/}
                                         </div>                                    
                                     </Tab>
                                     <Tab eventKey={4} title="Messages">

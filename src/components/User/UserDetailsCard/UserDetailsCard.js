@@ -33,11 +33,15 @@ const userDetailsCard = (props) => {
                     <div className="mb-10">
                         <strong>Member Since</strong>
                         <br></br>
-                        {new Intl.DateTimeFormat('en-US', {
+                        {/*{new Intl.DateTimeFormat('en-US', {
                             year: 'numeric',
                             month: 'long',
                             day: '2-digit'
-                        }).format(new Date(props.user.created))}
+                        }).format(new Date(props.user.created))}*/}
+                    </div>
+                    <div className="mb-10">
+                        {/*<strong>Reviews</strong>*/}
+                        <p>{props.user.reviews}</p>
                     </div>
                 </div>
                 <div className="card-footer mb-10">
