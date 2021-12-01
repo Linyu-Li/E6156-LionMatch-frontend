@@ -2,6 +2,9 @@ import axios from 'axios';
 
 import * as actionTypes from './actionTypes';
 
+const USER_REVIEW_URL = 'http://localhost:5004'
+const MAX_REVIEW_DISPLAY = 5
+
 export const userRegisterStart = () => {
     return {
         type: actionTypes.USER_REGISTER_START
@@ -205,7 +208,18 @@ export const getUser = (userId) => {
         let token = localStorage.getItem('token');
         axios.get(url, { headers: {"Authorization" : `Bearer ${token}`}})
         .then(response => {
-            dispatch(getUserSuccess(response.data));
+            axios.get(`${USER_REVIEW_URL}/users/${userId}/reviews`)
+            .then(res => {
+                res = res.data
+                const reviews = []
+                res.sort((a,b)=> (b.freq - a.freq))
+                for (let i=0;i<Math.min(res.length,MAX_REVIEW_DISPLAY);i++){
+                    reviews.push(res[i].review)
+                }
+
+                response.data.reviews = reviews.join(",")
+                dispatch(getUserSuccess(response.data));
+            })
         })
         .catch(err => {
             dispatch(getUserFail(err));
