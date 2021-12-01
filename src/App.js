@@ -47,8 +47,8 @@ class App extends Component {
                     <Route path="/users/:userId" component={UserDetails}/>
                     <Route path="/preference/:urlPrefId" component={UserPref}/>
                     <Route path="/preference" component={UserPref}/>
-                    <Route path="/api/userAvail/:uid/:id" component={Detail} />
-                    <Route path="/api/userAvail/:uid" component={TimePage} />
+                    <Route path="/userAvail/:uid/:id" component={Detail} />
+                    <Route path="/userAvail/:uid" component={TimePage} />
                     <Route path="/" exact component={Home}/>
                     <Redirect to="/"/>
                 </Switch>
