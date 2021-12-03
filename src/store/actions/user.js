@@ -209,18 +209,20 @@ export const getUser = (userId) => {
         let token = localStorage.getItem('token');
         axios.get(url, { headers: {"Authorization" : `Bearer ${token}`}})
         .then(response => {
-            axios.get(`${USER_REVIEW_URL}/users/${userId}/reviews`)
-            .then(res => {
-                res = res.data
-                const reviews = []
-                res.sort((a,b)=> (b.freq - a.freq))
-                for (let i=0;i<Math.min(res.length,MAX_REVIEW_DISPLAY);i++){
-                    reviews.push(res[i].review)
-                }
+            // axios.get(`${USER_REVIEW_URL}/users/${userId}/reviews`)
+            // .then(res => {
+            //     res = res.data
+            //     const reviews = []
+            //     res.sort((a,b)=> (b.freq - a.freq))
+            //     for (let i=0;i<Math.min(res.length,MAX_REVIEW_DISPLAY);i++){
+            //         reviews.push(res[i].review)
+            //     }
 
-                response.data.reviews = reviews.join(",")
-                dispatch(getUserSuccess(response.data));
-            })
+            //     response.data.reviews = reviews.join(",")
+            //     dispatch(getUserSuccess(response.data));
+            // })
+            console.log("response.data.firstName: "+response.data.firstName);
+            dispatch(getUserSuccess(response.data));
         })
         .catch(err => {
             dispatch(getUserFail(err));

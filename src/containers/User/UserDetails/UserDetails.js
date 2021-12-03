@@ -122,7 +122,8 @@ class UserDetails extends Component {
 const mapStateToProps = state => {
     return {
         userDetail: state.user.userDetail,
-        user: JSON.parse(state.auth.user),
+        // user: JSON.parse(state.auth.user),
+        user: state.auth.user,
         messageThread: state.user.messageThread
     }
 }

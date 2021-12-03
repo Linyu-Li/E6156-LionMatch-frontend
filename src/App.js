@@ -11,6 +11,7 @@ import Messages from './containers/Messages/Messages';
 import UserDetails from './containers/User/UserDetails/UserDetails';
 import UserPref from "./containers/UserPref/UserPref";
 import timeSlot from './containers/timeSlot/timeSlot';
+import NotFound from './containers/NotFound';
 import { TimePage } from "./containers/TimeSlot";
 import { Detail } from "./containers/detailView";
 import Layout from './hoc/Layout/Layout';
@@ -30,7 +31,7 @@ class App extends Component {
         let routes = (
             <Switch>
                 <Route path="/" exact component={Home}/>
-                <Redirect to="/"/>
+                <Route component={NotFound}/>
             </Switch>
         );
         console.log("this.props.isAuthenticated: " + this.props.isAuthenticated);
@@ -49,10 +50,11 @@ class App extends Component {
                     <Route path="/userAvail/:uid/:id" component={Detail} />
                     <Route path="/userAvail/:uid" component={TimePage} />
                     <Route path="/" exact component={Home}/>
-                    <Redirect to="/"/>
+                    <Route component={NotFound}/>
                 </Switch>
             );
         }
+        console.log("routes: "+routes);
 
         return (
             <Layout>

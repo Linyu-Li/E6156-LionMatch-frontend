@@ -5,6 +5,7 @@ import Logo from '../../Logo/Logo';
 import UserPhoto from '../../User/UserPhoto/UserPhoto';
 import NavbarItems from '../NavbarItems/NavbarItems';
 import NavDropdown from '../NavDropdown/NavDropdown';
+import { LinkContainer } from 'react-router-bootstrap';
 import './Navbar.css';
 
 const navbar = (props) => {
@@ -16,7 +17,9 @@ const navbar = (props) => {
             <div>
                 <NavbarItems/>                
                 <NavDropdown userKnownAs={props.userKnownAs}/>
+                <LinkContainer to={`/users/${props.userID}`}>
                 <UserPhoto userPhoto={props.userPhoto}/>
+                </LinkContainer>
             </div>            
         );
     }

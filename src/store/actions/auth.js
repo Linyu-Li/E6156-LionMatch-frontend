@@ -43,8 +43,8 @@ export const auth = (email, password) => {
             .then(response => {
                 window.alert(`Got token: ${response.data.token}`)
                 localStorage.setItem('token', response.data.token);
-                localStorage.setItem('user', JSON.stringify(response.data.user));
-                dispatch(authSuccess(response.data.token, JSON.stringify(response.data.user)));
+                localStorage.setItem('user', response.data.user);
+                dispatch(authSuccess(response.data.token, response.data.user));
             })
             .catch(err => {
                 window.alert(err.response.data);    // should show message defined in auth() in app.py
