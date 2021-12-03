@@ -29,7 +29,8 @@ export const register = (userData) => {
     return dispatch => {
         // userData.preventDefault();
         dispatch(userRegisterStart());
-        let url = 'http://localhost:5000/users';
+        // const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
+        let url = 'http://localhost:5000/api/users';
         // let url = process.env.REACT_APP_API_URL;
         axios.post(url, userData)
             .then(response => {
@@ -204,7 +205,7 @@ export const getUserFail = (error) => {
 
 export const getUser = (userId) => {
     return dispatch => {
-        let url = 'http://localhost:3006/users/' + userId;
+        let url = 'http://localhost:5000/api/users/' + userId;
         let token = localStorage.getItem('token');
         axios.get(url, { headers: {"Authorization" : `Bearer ${token}`}})
         .then(response => {

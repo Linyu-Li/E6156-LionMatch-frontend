@@ -55,6 +55,7 @@ class UserDetails extends Component {
     render() {
 
         let userInfo = null;
+        console.log("this.props.userDetail: "+this.props.userDetail)
         if (this.props.userDetail) {
 
             // const images = this.props.userDetail.photos.map(photo => {

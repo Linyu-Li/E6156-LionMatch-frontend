@@ -38,7 +38,7 @@ export const auth = (email, password) => {
             email: email,
             password: password
         };
-        let url = 'http://localhost:5000/auth';
+        let url = 'http://localhost:5000/api/auth';
         axios.post(url, authData)
             .then(response => {
                 window.alert(`Got token: ${response.data.token}`)

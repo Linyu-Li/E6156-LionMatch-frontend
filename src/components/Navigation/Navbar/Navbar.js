@@ -10,6 +10,7 @@ import './Navbar.css';
 const navbar = (props) => {
 
     let navContent = <Login/>;
+    console.log("props.isAuth: " + props.isAuth);
     if(props.isAuth){
         navContent = (
             <div>

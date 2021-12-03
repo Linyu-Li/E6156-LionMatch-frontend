@@ -19,13 +19,12 @@ class Layout extends Component {
 const mapStateToProps = state => {
     console.log(state.auth.user);
     console.log(state.auth.token);
-    if(!state.auth.token){
     return {
-        isAuthenticated: state.auth.token !== null,
-        userPhoto: state.auth.user ? JSON.parse(state.auth.user).photoUrl : null,
-        userKnownAs: state.auth.user ? JSON.parse(state.auth.user).knownAs : null
+        isAuthenticated: state.auth.token !== null
+        // userPhoto: state.auth.user ? JSON.parse(state.auth.user).photoUrl : null,
+        // userKnownAs: state.auth.user ? JSON.parse(state.auth.user).knownAs : null
     }
-    }
+    
 }
 
 export default connect(mapStateToProps)(Layout);

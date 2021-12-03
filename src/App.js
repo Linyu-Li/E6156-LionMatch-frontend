@@ -34,8 +34,7 @@ class App extends Component {
             </Switch>
         );
         console.log("this.props.isAuthenticated: " + this.props.isAuthenticated);
-        // if ( this.props.isAuthenticated ) {
-        if (true) {
+        if ( this.props.isAuthenticated ) {
             routes = (
                 <Switch>
                     <Route path="/AdminTool" exact component={AdminTool}/>
