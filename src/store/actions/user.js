@@ -29,7 +29,7 @@ export const register = (userData) => {
     return dispatch => {
         // userData.preventDefault();
         dispatch(userRegisterStart());
-        let url = 'http://localhost:5000/users';
+        let url = 'https://localhost:5000/users';
         // let url = process.env.REACT_APP_API_URL;
         axios.post(url, userData)
             .then(response => {
@@ -43,7 +43,7 @@ export const register = (userData) => {
 
 export const register2 = (userData) => {
     return new Promise((resolve, reject) => {
-        const url = 'http://localhost:5000/users';
+        const url = 'http://localhost:5000/api/users';
         axios.post(url, userData)
             .then(response => {
                 return resolve(userRegisterSuccess(response.data));
