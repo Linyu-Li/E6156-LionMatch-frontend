@@ -39,10 +39,6 @@ const userDetailsCard = (props) => {
                             day: '2-digit'
                         }).format(new Date(props.user.created))}*/}
                     </div>
-                    <div className="mb-10">
-                        {/*<strong>Reviews</strong>*/}
-                        <p>{props.user.reviews}</p>
-                    </div>
                 </div>
                 <div className="card-footer mb-10">
                     {props.children}

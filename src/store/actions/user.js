@@ -2,7 +2,8 @@ import axios from 'axios';
 
 import * as actionTypes from './actionTypes';
 
-const USER_REVIEW_URL = 'http://localhost:5004'
+const USER_REVIEW_URL = 'http://localhost:5004/api'
+const USER_URL = 'http://localhost:5000/api'
 const MAX_REVIEW_DISPLAY = 5
 
 export const userRegisterStart = () => {
@@ -30,7 +31,7 @@ export const register = (userData) => {
         // userData.preventDefault();
         dispatch(userRegisterStart());
         // const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
-        let url = 'http://localhost:5000/api/users';
+        let url = `${USER_URL}/users`;
         // let url = process.env.REACT_APP_API_URL;
         axios.post(url, userData)
             .then(response => {
@@ -44,7 +45,7 @@ export const register = (userData) => {
 
 export const register2 = (userData) => {
     return new Promise((resolve, reject) => {
-        const url = 'http://localhost:5000/users';
+        const url = `${USER_URL}/users`;
         axios.post(url, userData)
             .then(response => {
                 return resolve(userRegisterSuccess(response.data));
@@ -205,24 +206,21 @@ export const getUserFail = (error) => {
 
 export const getUser = (userId) => {
     return dispatch => {
-        let url = 'http://localhost:5000/api/users/' + userId;
+        let url = `${USER_URL}/users/` + userId;
         let token = localStorage.getItem('token');
         axios.get(url, { headers: {"Authorization" : `Bearer ${token}`}})
         .then(response => {
-            // axios.get(`${USER_REVIEW_URL}/users/${userId}/reviews`)
-            // .then(res => {
-            //     res = res.data
-            //     const reviews = []
-            //     res.sort((a,b)=> (b.freq - a.freq))
-            //     for (let i=0;i<Math.min(res.length,MAX_REVIEW_DISPLAY);i++){
-            //         reviews.push(res[i].review)
-            //     }
-
-            //     response.data.reviews = reviews.join(",")
-            //     dispatch(getUserSuccess(response.data));
-            // })
-            console.log("response.data.firstName: "+response.data.firstName);
-            dispatch(getUserSuccess(response.data));
+            axios.get(`${USER_REVIEW_URL}/users/${userId}/reviews`)
+            .then(res => {
+                res = res.data
+                const reviews = []
+                res.sort((a,b)=> (b.freq - a.freq))
+                for (let i=0;i<Math.min(res.length,MAX_REVIEW_DISPLAY);i++){
+                    reviews.push(res[i].review)
+                }
+                response.data.reviews = reviews.join(",")
+                dispatch(getUserSuccess(response.data));
+            })
         })
         .catch(err => {
             dispatch(getUserFail(err));

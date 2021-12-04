@@ -2,7 +2,7 @@ import axios from "axios";
 import * as actionTypes from "./actionTypes";
 
 
-const USER_REVIEW_URL = 'http://localhost:5004'
+const USER_REVIEW_URL = 'http://localhost:5004/api'
 const MAX_REVIEW_DISPLAY = 1
 
 const getReviewSuccess = (review) => {

@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { setState, Component } from 'react';
 import Button from 'react-bootstrap/lib/Button';
 import ButtonGroup from 'react-bootstrap/lib/ButtonGroup';
+import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar';
 import Col from 'react-bootstrap/lib/Col';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
@@ -17,14 +18,22 @@ import './UserDetails.css';
 import UserDetailsCard from '../../../components/User/UserDetailsCard/UserDetailsCard';
 
 class UserDetails extends Component {
-
-    state = {
-        message: '',
-        key: 1
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: '',
+            key: 1,
+            reviewInputBox: "hidden",
+            reviewInput: ""
+        };
+        this.editReview = this.editReview.bind(this)
+        this.handleReviewChange = this.handleReviewChange.bind(this)
+        this.handleReviewSubmit = this.handleReviewSubmit.bind(this)
+        this.cancelReviewEdit = this.cancelReviewEdit.bind(this)
+    }
 
     componentDidMount() {
-        const userId = +this.props.match.params.userId;
+        const userId =+ this.props.match.params.userId;
         this.props.onGetUser(userId);
     }
 
@@ -52,6 +61,25 @@ class UserDetails extends Component {
         this.setState(updateObject(this.state, {key: key}));    
     }
 
+    editReview() {
+        this.setState({reviewInputBox: ""})
+    }
+
+    cancelReviewEdit() {
+        this.setState({reviewInputBox: "hidden"})
+    }
+
+    handleReviewChange(message) {
+        this.setState({reviewInput: message.target.value})
+    }
+
+    handleReviewSubmit() {
+        if (this.state.reviewInput.length > 0) {
+            this.props.onUpdateReivew(this.props.userDetail.userID, this.state.reviewInput)
+        }
+        this.setState({reviewInputBox: "hidden"})
+    }
+
     render() {
 
         let userInfo = null;
@@ -70,6 +98,14 @@ class UserDetails extends Component {
                     <h1 className="mb-4 text-position">{this.props.userDetail.knownAs}'s Profile</h1>
                     <Row>
                         <UserDetailsCard user={this.props.userDetail}>
+                            <p onClick={this.editReview}>{this.props.userDetail.reviews}</p>
+                            <div hidden={this.state.reviewInputBox}>
+                                <input onChange={this.handleReviewChange}/>
+                                <ButtonGroup>
+                                    <Button bsStyle="primary" className="w-10" onClick={this.handleReviewSubmit}>Submit</Button>
+                                    <Button className="w-10" onClick={this.cancelReviewEdit}>Cancel</Button>
+                                </ButtonGroup>
+                            </div>
                             <ButtonGroup className="d-flex">
                                 <Button bsStyle="danger" className="w-100" onClick={this.sendLike}>Like</Button>
                                 <Button bsStyle="success" className="w-100" onClick={this.handleTabChange.bind(this, 4)}>Message</Button>
@@ -133,6 +169,7 @@ const mapDispatchToProps = dispatch => {
         onGetUser: (userId) => dispatch(actions.getUser(userId)),
         onGetMessageThread: (id, recipientId) => dispatch(actions.getMessageThread(id, recipientId)),
         onSendMessage: (id, message) => dispatch(actions.sendMessage(id, message)),
+        onUpdateReivew: (id, review) => dispatch(actions.addReview(id, review)),
         onSendLike: (id, recipientId) => dispatch( actions.sendLike(id, recipientId) )
     };
 };
