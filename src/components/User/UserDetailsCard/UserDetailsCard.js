@@ -15,11 +15,15 @@ const userDetailsCard = (props) => {
     return (
         <Col md={4} className="mx-3">
             <div className="card shadow-sm mb-10">
-                <Image className="card-img-top img-thumbnail border-none" src={userPhoto} alt={props.user.knownAs} />
+                <Image className="card-img-top img-thumbnail border-none" src={userPhoto} alt={props.user.nameFirst} />
                 <div className="card-body px-4">
                     <div>
                         <strong>Location</strong>
                         <p>{props.user.city}, {props.user.country}</p>
+                    </div>
+                    <div>
+                        <strong>Email</strong>
+                        <p>{props.user.email}</p>
                     </div>
                     <div>
                         <strong>Age</strong>

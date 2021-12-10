@@ -16,7 +16,7 @@ const navbar = (props) => {
         navContent = (
             <div>
                 <NavbarItems/>                
-                <NavDropdown userKnownAs={props.userKnownAs}/>
+                <NavDropdown usernameFirst={props.usernameFirst}/>
                 <LinkContainer to={`/users/${props.userID}`}>
                 <UserPhoto userPhoto={props.userPhoto}/>
                 </LinkContainer>

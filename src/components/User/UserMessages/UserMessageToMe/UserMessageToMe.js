@@ -19,7 +19,7 @@ const userMessageToMe = (props) => {
     return (
         <div>
           <span className="chat-img float-right">
-            <Image src={props.message.senderPhotoUrl} alt={props.message.senderKnownAs} className="rounded-circle" />
+            <Image src={props.message.senderPhotoUrl} alt={props.message.sendernameFirst} className="rounded-circle" />
           </span>
           <div className="chat-body">
             <div className="header">
