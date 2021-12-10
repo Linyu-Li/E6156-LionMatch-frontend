@@ -1,8 +1,8 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
+import {USR_REVIEW_URL} from "../../constants";
 
 
-const USER_REVIEW_URL = 'http://localhost:5004/api'
 const MAX_REVIEW_DISPLAY = 1
 
 const getReviewSuccess = (review) => {
@@ -39,7 +39,7 @@ const addReviewFail = (error) => {
 
 export const getReview = () => {
     return dispatch => {
-        axios.get(`${USER_REVIEW_URL}/reviews`)
+        axios.get(`${USR_REVIEW_URL}/reviews`)
             .then(res => {
             	res = res.data
                 dispatch(getReviewSuccess(res));
@@ -55,7 +55,7 @@ export const getUserReview = (userId) => {
         if (userId === undefined || userId === null) {
             dispatch(getReviewFail(Error('User UserReviewerence ID must not be empty!')));
         }
-        axios.get(`${USER_REVIEW_URL}/users/${userId}/reviews`)
+        axios.get(`${USR_REVIEW_URL}/users/${userId}/reviews`)
             .then(res => {
             	res = res.data
             	const reviews = []
@@ -74,9 +74,9 @@ export const getUserReview = (userId) => {
 
 export const addReview = (userId, review) => {
     return dispatch => {
-        const prefId = userId;
+        // const prefId = userId;
         const data = { data: {review: review }};
-        axios.post(`${USER_REVIEW_URL}/users/${userId}/reviews`, data)
+        axios.post(`${USR_REVIEW_URL}/users/${userId}/reviews`, data)
             .then((res) => {
                 dispatch(addReviewSuccess("done"));
             })

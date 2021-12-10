@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import {USR_ADDR_URL} from "../../constants";
 import * as actionTypes from './actionTypes';
 
 export const authStart = () => {
@@ -38,7 +38,7 @@ export const auth = (email, password) => {
             email: email,
             password: password
         };
-        let url = 'http://localhost:5000/api/auth';
+        let url = USR_ADDR_URL + '/auth';
         axios.post(url, authData)
             .then(response => {
                 window.alert(`Got token: ${response.data.token}`)

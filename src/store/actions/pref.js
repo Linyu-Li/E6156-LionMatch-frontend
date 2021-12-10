@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
+import {USR_PREF_URL} from "../../constants";
 
 
 const getPrefSuccess = (pref) => {
@@ -34,7 +35,7 @@ const updatePrefFail = (error) => {
 };
 
 
-const USER_PREF_URL = 'http://localhost:5000/profile'
+const USER_PREF_URL = USR_PREF_URL + '/profile';
 
 export const getPref = (prefId) => {
     return dispatch => {

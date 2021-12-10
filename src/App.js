@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect, Route, Switch, withRouter, BrowserRouter as Router} from 'react-router-dom';
 import './App.css';
 import Logout from './containers/Auth/Logout/Logout';
-import AdminTool from './containers/AdminTool/AdminTool';
+// import AdminTool from './containers/AdminTool/AdminTool';
 import Home from './containers/Home/Home';
 import Lists from './containers/Lists/Lists';
 import Matches from './containers/Matches/Matches';
@@ -16,7 +16,7 @@ import { TimePage } from "./containers/TimeSlot";
 import { Detail } from "./containers/detailView";
 import Layout from './hoc/Layout/Layout';
 import * as actions from './store/actions/index';
-import Admin from './containers/AdminTool/AdminTool'
+// import Admin from './containers/AdminTool/AdminTool'
 import UserList from "./containers/AdminTool/func/UserList";
 import AddUser from './containers/AdminTool/func/AddUser';
 
@@ -38,7 +38,7 @@ class App extends Component {
         if ( this.props.isAuthenticated ) {
             routes = (
                 <Switch>
-                    <Route path="/AdminTool" exact component={AdminTool}/>
+                    {/*<Route path="/AdminTool" exact component={AdminTool}/>*/}
                     <Route path="/AdminTool/add" component={AddUser}/>
                     <Route path="/matches" component={Matches}/>
                     <Route path="/lists" component={Lists}/>

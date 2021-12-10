@@ -1,10 +1,12 @@
 import React from "react"
 //import {useHistory} from 'react-router-dom'
+import {SCHEDULER_URL} from "../constants";
+
 
 export const Delete = ({id,uid, props}) =>{
 //    const history = useHistory()
     const deleteTime = () =>{
-        fetch(`http://127.0.0.1:5000/api/availability/users/${uid}/${id}`,{
+        fetch(SCHEDULER_URL + `/availability/users/${uid}/${id}`,{
             method: 'DELETE',
             body:JSON.stringify({
                 uid:uid,

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 import * as actionTypes from './actionTypes';
+import {USR_ADDR_URL, USR_REVIEW_URL} from "../../constants";
 
-const USER_REVIEW_URL = 'http://localhost:5004/api'
-const USER_URL = 'http://localhost:5000/api'
+
 const MAX_REVIEW_DISPLAY = 5
 
 export const userRegisterStart = () => {
@@ -31,7 +31,7 @@ export const register = (userData) => {
         // userData.preventDefault();
         dispatch(userRegisterStart());
         // const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
-        let url = `${USER_URL}/users`;
+        let url = `${USR_ADDR_URL}/users`;
         // let url = process.env.REACT_APP_API_URL;
         axios.post(url, userData)
             .then(response => {
@@ -45,7 +45,7 @@ export const register = (userData) => {
 
 export const register2 = (userData) => {
     return new Promise((resolve, reject) => {
-        const url = `${USER_URL}/users`;
+        const url = `${USR_ADDR_URL}/users`;
         axios.post(url, userData)
             .then(response => {
                 return resolve(userRegisterSuccess(response.data));
@@ -206,11 +206,11 @@ export const getUserFail = (error) => {
 
 export const getUser = (userId) => {
     return dispatch => {
-        let url = `${USER_URL}/users/` + userId;
+        let url = `${USR_ADDR_URL}/users/` + userId;
         let token = localStorage.getItem('token');
         axios.get(url, { headers: {"Authorization" : `Bearer ${token}`}})
         .then(response => {
-            axios.get(`${USER_REVIEW_URL}/users/${userId}/reviews`)
+            axios.get(`${USR_REVIEW_URL}/users/${userId}/reviews`)
             .then(res => {
                 res = res.data
                 const reviews = []

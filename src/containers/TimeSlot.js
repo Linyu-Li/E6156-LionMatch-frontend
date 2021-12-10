@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "../containers/cards";
 import { Form } from "../containers/form";
+import {SCHEDULER_URL} from "../constants";
 
 export const TimePage = (props) => {
     const uid  = props.match.params.uid;
@@ -17,7 +18,7 @@ export const TimePage = (props) => {
 
     useEffect(() => {
         // Fetch the list of times API
-        fetch(`http://127.0.0.1:5000/api/availability/users/${uid}`)
+        fetch(SCHEDULER_URL + `/availability/users/${uid}`)
             .then((response) => {
                 if (response.ok) {
                     return response.json();
@@ -35,7 +36,7 @@ export const TimePage = (props) => {
 
     const handleFormSubmit = () => {
         // Creates time suing the API
-        fetch(`http://127.0.0.1:5000/api/availability/users/${uid}`, {
+        fetch(SCHEDULER_URL + `/availability/users/${uid}`, {
             method: "POST",
             body: JSON.stringify({
                 // Id: addTime.Id,
@@ -66,7 +67,7 @@ export const TimePage = (props) => {
 
     const getUpdate = () => {
         // Automatically update the list as you submit the form
-        fetch(`http://127.0.0.1:5000/api/availability/users/${uid}`)
+        fetch(SCHEDULER_URL + `/api/availability/users/${uid}`)
             .then((response) => {
                 if (response.ok) {
                     return response.json();
