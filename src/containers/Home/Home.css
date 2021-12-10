@@ -23,7 +23,7 @@
   color: #262626;
 }
 
-@media (max-width: 100rem) {
+@media (max-width: 200rem) {
   .background {
     /* background-color: ; */
     background-position: bottom center;

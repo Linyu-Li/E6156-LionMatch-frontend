@@ -14,211 +14,6 @@ import * as actions from '../../../store/actions/index';
 import './UserRegister.css';
 
 
-// export default function UserRegister({ onCanceled }) {
-
-//     const [state, setState] = React.useState({
-    //     userData: {
-    //         nameFirst: {
-    //             elementConfig: {
-    //                 type: 'text',
-    //                 placeholder: 'First name on ID'
-    //             },
-    //             value: null,
-    //             validation: {
-    //                 required: true
-    //             },
-    //             valid: false
-    //         },
-    //         nameLast: {
-    //             elementConfig: {
-    //                 type: 'text',
-    //                 placeholder: 'Last name on ID'
-    //             },
-    //             value: null,
-    //             validation: {
-    //                 required: true
-    //             },
-    //             valid: false
-    //         },
-    //         email: {
-    //             elementConfig: {
-    //                 type: 'text',
-    //                 placeholder: 'University Email'
-    //             },
-    //             value: null,
-    //             validation: {
-    //                 required: true
-    //             },
-    //             valid: false
-    //         },
-    //         affiliatedCollege: {
-    //             elementConfig: {
-    //                 type: 'text',
-    //                 placeholder: 'affiliated school/college'
-    //             },
-    //             value: null,
-    //             validation: {
-    //                 required: false  // for debug purpose
-    //             },
-    //             valid: false
-    //         },
-    //         dateOfBirth: {
-    //             elementConfig: {
-    //                 type: 'date',
-    //                 placeholder: 'Date Of Birth'
-    //             },
-    //             value: null,
-    //             validation: {
-    //                 required: false  // for debug purpose
-    //             },
-    //             valid: false
-    //         },
-    //         city: {
-    //             elementConfig: {
-    //                 type: 'text',
-    //                 placeholder: 'City'
-    //             },
-    //             value: null,
-    //             validation: {
-    //                 required: false  // for debug purpose
-    //             },
-    //             valid: false
-    //         },
-    //         country: {
-    //             elementConfig: {
-    //                 type: 'text',
-    //                 placeholder: 'Country'
-    //             },
-    //             value: null,
-    //             validation: {
-    //                 required: false  // for debug purpose
-    //             },
-    //             valid: false
-    //         },
-    //         password: {
-    //             elementConfig: {
-    //                 type: 'password',
-    //                 placeholder: 'Password'
-    //             },
-    //             value: null,
-    //             validation: {
-    //                 required: true
-    //             },
-    //             valid: false
-    //         },
-    //         confirmPassword: {
-    //             elementConfig: {
-    //                 type: 'password',
-    //                 placeholder: 'Confirm Password'
-    //             },
-    //             value: null,
-    //             validation: {
-    //                 required: true
-    //             },
-    //             valid: false
-    //         }
-    //     },
-    //     gender: 'Male'
-    // })
-
-//     const genderOptions = ['Male', 'Female', 'X', 'Secret']
-
-//     const inputChangedHandler = ( event, controlName ) => {
-//         const updatedControls = updateObject(state.userData, {
-//             [controlName]: updateObject(state.userData[controlName], {
-//                 value: event.target.value,
-//                 valid: checkValidity(event.target.value, state.userData[controlName].validation )
-//             })
-//         });
-//         setState( { ...state, userData: updatedControls } );
-//     }
-
-//     const handleGenderChange = ev => {
-//         setState({
-//             ...state,
-//             gender: ev.target.value
-//         });
-//     };
-
-//     const submitHandler = ( event ) => {
-//         event.preventDefault();
-
-//         const formData = {};
-//         if (state.userData.email.value === null ||
-//             state.userData.password.value === null ||
-//             state.userData.confirmPassword.value === null) {
-//             window.alert("Some required information not filled!")
-//             return;
-//         }
-
-//         if (state.userData.password.value !== state.userData.confirmPassword.value) {
-//             // TODO prompt something about password mismatch
-//             window.alert("Passwords mismatch!");
-//             return;
-//         }
-
-//         for (let formElementIdentifier in state.userData) {
-//             if (formElementIdentifier === 'confirmPassword')  continue;
-//             formData[formElementIdentifier] = state.userData[formElementIdentifier].value;
-//         }
-
-//         formData['gender'] = state.gender.toLowerCase();
-
-//         // Should show messages defined in users() in app.py
-//         actions.register2(formData)
-//             .then(res => {
-//                 window.alert(res.response);
-//             })
-//             .catch(err => { window.alert(err.error.response.data); });  // TODO redirect to / prompt login
-
-//         // this.props.onRegister( formData );
-//     }
-
-//     const formElementsArray = [];
-//     for ( let key in state.userData ) {
-//         formElementsArray.push( {
-//             id: key,
-//             config: state.userData[key]
-//         } );
-//     }
-
-//     const formFields = formElementsArray.map( formElement => (
-//         <Input
-//             key={formElement.id}
-//             elementConfig={formElement.config.elementConfig}
-//             value={formElement.config.value}
-//             changed={( event ) => inputChangedHandler( event, formElement.id )} />
-//     ) );
-
-//     const radios = genderOptions.map( op => (
-//         <Radio name="radioGroup" inline value={op} checked={state.gender === op} onChange={handleGenderChange}>
-//             {op}
-//         </Radio>
-//     ));
-
-//     return (
-//         <Grid>
-//             <Row>
-//                 <Col xs={12} md={10} lg={6}>
-//                     <h2>Sign Up</h2>
-//                     <hr></hr>
-//                     <form>
-//                         <FormGroup>
-//                             <ControlLabel>My gender is</ControlLabel>
-//                             {radios}
-//                         </FormGroup>
-//                         {formFields}
-//                         <ButtonToolbar className="float-right">
-//                             <Button bsStyle="success" onClick={submitHandler}>Register</Button>
-//                             <Button onClick={onCanceled}>Cancel</Button>
-//                         </ButtonToolbar>
-//                     </form>
-//                 </Col>
-//             </Row>
-//         </Grid>
-//     );
-// }
-
 class UserRegister extends Component {
 
     state = {
@@ -248,7 +43,7 @@ class UserRegister extends Component {
             email: {
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'University Email'
+                    placeholder: 'University Email (Required)'
                 },
                 value: null,
                 validation: {
@@ -256,54 +51,76 @@ class UserRegister extends Component {
                 },
                 valid: false
             },
-            affiliatedCollege: {
+            // affiliatedCollege: {
+            //     elementConfig: {
+            //         type: 'text',
+            //         placeholder: 'affiliated school/college'
+            //     },
+            //     value: null,
+            //     validation: {
+            //         required: false  // for debug purpose
+            //     },
+            //     valid: false
+            // },
+            // dateOfBirth: {
+            //     elementConfig: {
+            //         type: 'date',
+            //         placeholder: 'Date Of Birth'
+            //     },
+            //     value: null,
+            //     validation: {
+            //         required: false  // for debug purpose
+            //     },
+            //     valid: false
+            // },
+            // city: {
+            //     elementConfig: {
+            //         type: 'text',
+            //         placeholder: 'City'
+            //     },
+            //     value: null,
+            //     validation: {
+            //         required: false  // for debug purpose
+            //     },
+            //     valid: false
+            // },
+            // country: {
+            //     elementConfig: {
+            //         type: 'text',
+            //         placeholder: 'Country'
+            //     },
+            //     value: null,
+            //     validation: {
+            //         required: false  // for debug purpose
+            //     },
+            //     valid: false
+            // },
+            address: {
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'affiliated school/college'
+                    placeholder: 'Street Address'
                 },
                 value: null,
                 validation: {
-                    required: false  // for debug purpose
+                    required: false
                 },
                 valid: false
             },
-            dateOfBirth: {
-                elementConfig: {
-                    type: 'date',
-                    placeholder: 'Date Of Birth'
-                },
-                value: null,
-                validation: {
-                    required: false  // for debug purpose
-                },
-                valid: false
-            },
-            city: {
+            postcode: {
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'City'
+                    placeholder: 'Postal Code (Required)'
                 },
                 value: null,
                 validation: {
-                    required: false  // for debug purpose
-                },
-                valid: false
-            },
-            country: {
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Country'
-                },
-                value: null,
-                validation: {
-                    required: false  // for debug purpose
+                    required: true
                 },
                 valid: false
             },
             password: {
                 elementConfig: {
                     type: 'password',
-                    placeholder: 'Password'
+                    placeholder: 'Password (Required)'
                 },
                 value: null,
                 validation: {
@@ -314,7 +131,7 @@ class UserRegister extends Component {
             confirmPassword: {
                 elementConfig: {
                     type: 'password',
-                    placeholder: 'Confirm Password'
+                    placeholder: 'Confirm Password (Required)'
                 },
                 value: null,
                 validation: {
@@ -348,11 +165,18 @@ class UserRegister extends Component {
         const formData = {};
         for (let formElementIdentifier in this.state.userData) {
             if (formElementIdentifier === 'confirmPassword')  continue;
-            formData[formElementIdentifier] = this.state.userData[formElementIdentifier].value;
+            if (this.state.userData[formElementIdentifier].value) {
+                formData[formElementIdentifier] = this.state.userData[formElementIdentifier].value;
+            }
         }
 
         formData['Gender'] = this.state.gender.toLowerCase();
-        this.props.onRegister( formData );
+        this.props.onRegister( formData )
+            .then(() => {
+                // back to non-registration mode after registration step
+                window.alert('User registered! Please log in to continue!');
+                this.props.canceled();
+            });
     }
 
     render() {
@@ -378,12 +202,14 @@ class UserRegister extends Component {
                 <Row>
                     <Col xs={12} md={10} lg={6}>
                         <h2>Sign Up</h2>
-                        <hr></hr>
+                        <hr/>
                         <form>
                             <FormGroup>
                                 <ControlLabel>I am a</ControlLabel>
                                 <Radio name="radioGroup" inline value="Male" checked={this.state.gender === "Male"} onChange={this.handleGenderChange}>Male</Radio>
                                 <Radio name="radioGroup" inline value="Female" checked={this.state.gender === "Female"} onChange={this.handleGenderChange}>Female</Radio>
+                                <Radio name="radioGroup" inline value="Other" checked={this.state.gender === "Other"} onChange={this.handleGenderChange}>Other</Radio>
+                                <Radio name="radioGroup" inline value="Secret" checked={this.state.gender === "Secret"} onChange={this.handleGenderChange}>Secret</Radio>
                             </FormGroup>
                             {formFields}
                             <ButtonToolbar className="float-right">
@@ -400,7 +226,12 @@ class UserRegister extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onRegister: ( user ) => dispatch( actions.register( user ) ),
+        onRegister: ( user ) => {
+            return new Promise((resolve, reject) => {
+                dispatch(actions.register(user))
+                resolve()
+            });
+        }
     };
 };
 

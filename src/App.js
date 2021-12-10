@@ -7,26 +7,26 @@ import Logout from './containers/Auth/Logout/Logout';
 import Home from './containers/Home/Home';
 import Lists from './containers/Lists/Lists';
 import Matches from './containers/Matches/Matches';
-import Messages from './containers/Messages/Messages';
+// import Messages from './containers/Messages/Messages';
 import UserDetails from './containers/User/UserDetails/UserDetails';
 import UserPref from "./containers/UserPref/UserPref";
-import timeSlot from './containers/timeSlot/timeSlot';
+// import timeSlot from './containers/timeSlot/timeSlot';
 import NotFound from './containers/NotFound';
 import { TimePage } from "./containers/TimeSlot";
 import { Detail } from "./containers/detailView";
 import Layout from './hoc/Layout/Layout';
 import * as actions from './store/actions/index';
 // import Admin from './containers/AdminTool/AdminTool'
-import UserList from "./containers/AdminTool/func/UserList";
-import AddUser from './containers/AdminTool/func/AddUser';
-import {
-    GoogleButton,
-    IAuthorizationOptions,
-    isLoggedIn,
-    createOAuthHeaders,
-    logOutOAuthUser,
-    GoogleAuth,
-} from "react-google-oauth2";
+// import UserList from "./containers/AdminTool/func/UserList";
+// import AddUser from './containers/AdminTool/func/AddUser';
+// import {
+//     GoogleButton,
+//     IAuthorizationOptions,
+//     isLoggedIn,
+//     createOAuthHeaders,
+//     logOutOAuthUser,
+//     GoogleAuth,
+// } from "react-google-oauth2";
 
 class App extends Component {
     // <Route path="/AdminTool" exact component={AdminTool}/>

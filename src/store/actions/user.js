@@ -28,11 +28,8 @@ export const userRegisterFail = (error) => {
 
 export const register = (userData) => {
     return dispatch => {
-        // userData.preventDefault();
         dispatch(userRegisterStart());
-        // const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
-        let url = `${USR_ADDR_URL}/users`;
-        // let url = process.env.REACT_APP_API_URL;
+        const url = `${USR_ADDR_URL}/users`;
         axios.post(url, userData)
             .then(response => {
                 dispatch(userRegisterSuccess());
