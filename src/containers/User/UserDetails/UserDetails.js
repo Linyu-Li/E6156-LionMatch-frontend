@@ -95,7 +95,7 @@ class UserDetails extends Component {
 
             userInfo = (
                 <Row>
-                    <h1 className="mb-4 text-position">{this.props.userDetail.knownAs}'s Profile</h1>
+                    <h1 className="mb-4 text-position">{this.props.userDetail.nameFirst}'s Profile</h1>
                     <Row>
                         <UserDetailsCard user={this.props.userDetail}>
                             <p onClick={this.editReview}>{this.props.userDetail.reviews}</p>

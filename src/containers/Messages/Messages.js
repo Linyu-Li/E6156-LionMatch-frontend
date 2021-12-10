@@ -53,14 +53,14 @@ class Matches extends Component {
                             return (
                                 <td className="text-center">
                                     <img src={message.senderPhotoUrl} className="rounded-circle" alt=""></img>
-                                    <strong>{message.senderKnownAs}</strong>
+                                    <strong>{message.sendernameFirst}</strong>
                                 </td>   
                             ); 
                         }else if(this.state.messageContainer !== 'Inbox'){
                             return (
                                 <td className="text-center">
                                     <img src={message.recipientPhotoUrl} className="rounded-circle" alt=""></img>
-                                    <strong>{message.recipientKnownAs}</strong>
+                                    <strong>{message.recipientnameFirst}</strong>
                                 </td>   
                             ); 
                         } 

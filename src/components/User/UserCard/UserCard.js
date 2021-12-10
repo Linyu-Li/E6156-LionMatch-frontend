@@ -23,7 +23,7 @@ const userCard = (props) => {
         <Col xs={10} sm={6} md={4} lg={2}>
             <div className="card mb-4 shadow-sm">
                 <div className="card-img-wrapper">
-                    <img className="card-img-top" src={userPhoto} alt={props.user.knownAs}/>
+                    <img className="card-img-top" src={userPhoto} alt={props.user.nameFirst}/>
                     <ul className="list-inline member-icons animate text-center">
                         <li><LinkContainer to={`/users/${props.user.id}`}><Button bsStyle="danger"><FontAwesomeIcon icon="user"/></Button></LinkContainer></li>
                         <li><Button bsStyle="danger" onClick={props.likeUser}><FontAwesomeIcon icon="heart"/></Button></li>
@@ -33,7 +33,7 @@ const userCard = (props) => {
                 <div className="card-body">
                     <h6 className="card-title text-center my-1">
                         <i className="fa fa-user"></i>
-                        {props.user.knownAs}, {props.user.age}
+                        {props.user.nameFirst}, {props.user.age}
                     </h6>
                     <p className="card-text text-muted text-center">{props.user.city}</p>
                 </div>
