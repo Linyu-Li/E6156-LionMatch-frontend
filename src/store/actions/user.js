@@ -219,7 +219,11 @@ export const getUser = (userId) => {
                     reviews.push(res[i].review)
                 }
                 response.data.reviews = reviews.join(",")
-                dispatch(getUserSuccess(response.data));
+                axios.get(`${USR_ADDR_URL}/address/${response.data.addressID}`)
+                .then(res => {
+                    response.data.postalCode = res.data.postalCode
+                    dispatch(getUserSuccess(response.data));                    
+                })
             })
         })
         .catch(err => {

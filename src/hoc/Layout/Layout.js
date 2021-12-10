@@ -7,7 +7,7 @@ class Layout extends Component {
     render() {
         return (            
             <div>
-                <Navbar isAuth={this.props.isAuthenticated} userID={this.props.userID} userPhoto={this.props.userPhoto} userKnownAs={this.props.userKnownAs}/>
+                <Navbar isAuth={this.props.isAuthenticated} userID={this.props.userID} userPhoto={this.props.userPhoto} usernameFirst={this.props.usernameFirst}/>
                 <main>
                     {this.props.children}
                 </main>
@@ -23,7 +23,7 @@ const mapStateToProps = state => {
         isAuthenticated: state.auth.token !== null,
         userID: state.auth.user? state.auth.user.userID : null
         // userPhoto: state.auth.user ? JSON.parse(state.auth.user).photoUrl : null,
-        // userKnownAs: state.auth.user ? JSON.parse(state.auth.user).knownAs : null
+        // usernameFirst: state.auth.user ? JSON.parse(state.auth.user).nameFirst : null
     }
     
 }

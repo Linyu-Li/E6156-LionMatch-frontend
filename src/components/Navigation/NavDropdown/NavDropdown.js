@@ -13,7 +13,7 @@ library.add(faSignOutAlt);
 
 const navDropdown = (props) => {
 
-    let message = 'Welcome ' + props.userKnownAs;
+    let message = 'Welcome ' + props.nameFirst;
     return (
         <Nav pullRight>            
             <NavDropdown title={message} id="basic-nav-dropdown">
