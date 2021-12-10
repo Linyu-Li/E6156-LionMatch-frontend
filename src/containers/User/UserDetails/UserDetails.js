@@ -75,7 +75,7 @@ class UserDetails extends Component {
 
     handleReviewSubmit() {
         if (this.state.reviewInput.length > 0) {
-            this.props.onUpdateReivew(this.props.userDetail.userID, this.state.reviewInput)
+            this.props.onUpdateReivew(this.props.match.params.userId, this.state.reviewInput)
         }
         this.setState({reviewInputBox: "hidden"})
     }
