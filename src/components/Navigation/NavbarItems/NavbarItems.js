@@ -13,9 +13,6 @@ const navbarItems = (props) => {
             <LinkContainer to="/lists">
                 <NavItem>Lists</NavItem>
             </LinkContainer>
-            <LinkContainer to="/messages">
-                <NavItem>Messages</NavItem>
-            </LinkContainer>
         </Nav>
     );
 }
