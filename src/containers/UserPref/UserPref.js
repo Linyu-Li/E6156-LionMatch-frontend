@@ -103,10 +103,10 @@ const UserPref = ({ prefId, onGetPref, onUpdatePref, curPref, canceled }) => {
     });
 
     React.useEffect(() => {
-        if (curPref && curPref.length) {
+        if (curPref !== undefined && curPref !== null) {
             let update = {};
             for (let formElementIdentifier in state) {
-                update[formElementIdentifier] = {...state[formElementIdentifier], value: curPref[0][formElementIdentifier] };
+                update[formElementIdentifier] = {...state[formElementIdentifier], value: curPref[formElementIdentifier] };
             }
             setState(updateObject(state, update));
         }

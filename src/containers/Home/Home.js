@@ -20,7 +20,7 @@ const responseGoogle = (response) => {
     console.log("response: "+response);
 };
 
-const options: IAuthorizationOptions = {
+const options = {
     clientId: "1093327178993-kbj68ghvsopafunmdk8rt1r6upt0oqdo.apps.googleusercontent.com",
     redirectUri: "http://localhost:3000",
     scopes: ["openid", "profile", "email"],
@@ -62,7 +62,7 @@ class Home extends Component {
 
                                         <GoogleAuth>
                                             <GoogleAuthConsumer>
-                                                {({responseState, isAuthenticated}: IOAuthState) => {
+                                                {({responseState, isAuthenticated}) => {
                                                     if (!isAuthenticated) {
                                                     return <GoogleButton
                                                         // placeholder="demo/search.png" // Optional
