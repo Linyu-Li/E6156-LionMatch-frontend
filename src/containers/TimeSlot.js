@@ -1,22 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { Card } from "./cards";
-import { Form } from "./form";
+import React, {useState, useEffect} from "react";
+import {Card} from "./cards";
+import {Form} from "./form";
 import {SCHEDULER_URL} from "../constants";
 
 export const TimePage = (props) => {
-    const uid  = props.match.params.uid;
+    const uid = props.match.params.uid;
     const [time, setTime] = useState([]);
     const [addTime, setAddTime] = useState({
-        Id:"",
-        Year:"",
-        Month:"",
-        Day:"",
-        StartTime:"",
-        EndTime:""
+        Id: "",
+        Year: "",
+        Month: "",
+        Day: "",
+        StartTime: "",
+        EndTime: ""
     });
+    const [disableEdit, setDisableEdit] = useState(true);
     // console.log(uid)
 
     useEffect(() => {
+        // Read currently logged in user
+        let curUsrId = null;
+        const user_str = localStorage.getItem('user');
+        if (user_str) {
+            try {
+                const user = JSON.parse(user_str);
+                curUsrId = user.userID;
+            } catch (e) {}
+        }
+        setDisableEdit(curUsrId === null || curUsrId.toString() !== uid);
         // Fetch the list of times API
         fetch(SCHEDULER_URL + `/availability/users/${uid}`)
             .then((response) => {
@@ -61,17 +72,17 @@ export const TimePage = (props) => {
         })
             .then((response) => {
                 setAddTime({
-                    Id:"",
-                    Year:"",
-                    Month:"",
-                    Day:"",
-                    StartTime:"",
-                    EndTime:""
+                    Id: "",
+                    Year: "",
+                    Month: "",
+                    Day: "",
+                    StartTime: "",
+                    EndTime: ""
                 });
                 // getUpdate();
                 window.location.reload();
             })
-            // .catch((err) => (console.log(err)));
+        // .catch((err) => (console.log(err)));
     };
 
     // const getUpdate = () => {
@@ -87,11 +98,13 @@ export const TimePage = (props) => {
 
     return (
         <>
-            <Form
-                input={addTime}
-                onFormChange={handleFormChange}
-                onFormSubmit={handleFormSubmit}
-            />
+            {!disableEdit && (
+                <Form
+                    input={addTime}
+                    onFormChange={handleFormChange}
+                    onFormSubmit={handleFormSubmit}
+                />
+            )}
             <Card listOfTime={time} uid={props.match.params.uid}/>
         </>
     );

@@ -10,7 +10,7 @@ export const Card = ({ listOfTime, uid }) => {
 
                     <ul key={time.Id}>
 
-                        <li><Link to={uid+'/'+time.Id}>{time.Year} - {time.Month} - {time.Day} {time.StartTime} - {time.EndTime}</Link></li>
+                        <li><Link to={uid+'/'+time.Id}>{time.Month + '/' + time.Day + '/' + time.Year + `  ${time.StartTime} - ${time.EndTime}`}</Link></li>
                     </ul>
                 );
             })}

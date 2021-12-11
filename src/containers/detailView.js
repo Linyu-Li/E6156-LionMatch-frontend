@@ -20,13 +20,24 @@ export const Detail = (props) => {
         StartTime: "",
         EndTime: ""
     });
+    const [disableEdit, setDisableEdit] = useState(true);
 
     // console.log(id)
     // console.log(uid)
 
     useEffect(() => {
-        fetch(SCHEDULER_URL + `/timeSlot/${id}`)
+        // Read currently logged in user
+        let curUsrId = null;
+        const user_str = localStorage.getItem('user');
+        if (user_str) {
+            try {
+                const user = JSON.parse(user_str);
+                curUsrId = user.userID;
+            } catch (e) {}
+        }
+        setDisableEdit(curUsrId === null || curUsrId.toString() !== uid);
 
+        fetch(SCHEDULER_URL + `/timeSlot/${id}`)
             .then((response) => response.json())
             .then((data) => setTime(data));
     }, [id]);
@@ -70,18 +81,27 @@ export const Detail = (props) => {
 
     return (
         <div>
-            <Form
-                input={updateTime}
-                onFormChange={handleFormChange}
-                onFormSubmit={handleFormSubmit}
-            />
-            <br/>
+            {!disableEdit && (
+                <>
+                    <Form
+                        input={updateTime}
+                        onFormChange={handleFormChange}
+                        onFormSubmit={handleFormSubmit}
+                    />
+                    <p>Fill the above to update</p>
+                    <br/>
+                </>
+            )}
             {time.map((data) => (
                 <div key="id">Current Detail: {data.Month}/{data.Day}/{data.Year} {data.StartTime} - {data.EndTime}</div>
             ))}
             <br/>
-            <Delete id={id} uid={props.match.params.uid} props={props}/><p>Fill the above to update</p>
-            &nbsp;&nbsp;
+            {!disableEdit && (
+                <>
+                    <Delete id={id} uid={props.match.params.uid} props={props}/>
+                    <br/>
+                </>
+            )}
             <Link to={'/userAvail/' + props.match.params.uid}>Go Back to List</Link>
         </div>
     );
