@@ -25,11 +25,21 @@ const UserPref = ({ prefId, onGetPref, onUpdatePref, curPref, canceled }) => {
     prefId = urlPrefId || prefId;
 
     React.useEffect(() => {
+        let curUsrId = null;
+        const user_str = localStorage.getItem('user');
+        if (user_str) {
+            try {
+                const user = JSON.parse(user_str);
+                curUsrId = user.userID;
+            } catch (e) {}
+        }
         if (prefId !== undefined && prefId !== null) {
             onGetPref(prefId);
         }
+        setDisableEdit(curUsrId === null || prefId !== curUsrId.toString());
     }, [prefId])
 
+    const [disableEdit, setDisableEdit] = React.useState(true);
     const [state, setState] = React.useState({
         major: {
             elementConfig: {
@@ -159,6 +169,7 @@ const UserPref = ({ prefId, onGetPref, onUpdatePref, curPref, canceled }) => {
                 elementConfig={formElement.config.elementConfig}
                 value={formElement.config.value}
                 changed={( event ) => inputChangedHandler( event, formElement.id )}
+                disabled={disableEdit}
             />
         </>
     ));
@@ -170,6 +181,7 @@ const UserPref = ({ prefId, onGetPref, onUpdatePref, curPref, canceled }) => {
             value={o}
             checked={state.orientation.value === o}
             onChange={handleOrientChange}
+            disabled={disableEdit}
         >
             {o}
         </Radio>
@@ -189,8 +201,14 @@ const UserPref = ({ prefId, onGetPref, onUpdatePref, curPref, canceled }) => {
                         </FormGroup>
                         {formFields}
                         <ButtonToolbar className="float-right">
-                            <Button bsStyle="success" onClick={submitHandler}>Update</Button>
-                            {/*<Button onClick={canceled}>Cancel</Button>*/}
+                            {!disableEdit && (
+                                <Button
+                                    bsStyle="success"
+                                    onClick={submitHandler}
+                                >
+                                    Update
+                                </Button>
+                            )}
                         </ButtonToolbar>
                     </Form>
                 </Col>

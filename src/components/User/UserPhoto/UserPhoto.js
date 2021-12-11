@@ -12,7 +12,7 @@ const userPhoto = (props) => {
         userPhoto = props.userPhoto;
     }
     let url = `/users/${props.userID}`
-    console.log("url: "+url);
+    // console.log("url: "+url);
 
     return (
         <Nav pullRight>

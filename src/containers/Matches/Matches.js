@@ -20,7 +20,7 @@ class Matches extends Component {
             fetch(SCHEDULER_URL + "/matchUser/" + userId, {method: 'GET'})
                 .then(response => {
                         if (response.ok) {
-                            console.log(response)
+                            // console.log(response)
                             return response.json();
                         }
                     })

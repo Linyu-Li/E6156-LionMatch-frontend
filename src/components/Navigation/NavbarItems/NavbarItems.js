@@ -4,7 +4,7 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const navbarItems = (props) => {
-    console.log(props.userID);
+    // console.log(props.userID);
     let matchURL = `/matches/${props.userID}`
     let scheduleURL = `/userAvail/${props.userID}`
     return (

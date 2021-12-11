@@ -8,10 +8,9 @@ import NavDropdown from '../NavDropdown/NavDropdown';
 import './Navbar.css';
 
 const navbar = (props) => {
-
     let navContent = <Login/>;
-    console.log("props.userID: " + props.userID); 
-    console.log("props.usernameFirst: " + props.usernameFirst);
+    // console.log("props.userID: " + props.userID);
+    // console.log("props.usernameFirst: " + props.usernameFirst);
     if(props.isAuth){
         navContent = (
             <div>
