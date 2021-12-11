@@ -113,13 +113,13 @@ class UserDetails extends Component {
                                     activeKey={this.state.key} 
                                     onSelect={(key) => this.handleTabChange(key)}>
                                     <Tab eventKey={1} title="About">
-                                        <h4 className="font-weight-bold">Description</h4>
-                                        <p className="mb-10">{this.props.userDetail.introduction}</p>
-                                        <h4 className="font-weight-bold">Looking For</h4>
-                                        <p>{this.props.userDetail.lookingFor}</p>
-                                        <h4 className="font-weight-bold">Current Weather</h4>
+                                        {/*<h4 className="font-weight-bold">Description</h4>*/}
+                                        {/*<p className="mb-10">{this.props.userDetail.introduction}</p>*/}
+                                        {/*<h4 className="font-weight-bold">Looking For</h4>*/}
+                                        {/*<p>{this.props.userDetail.lookingFor}</p>*/}
+                                        <h4 className="font-weight-bold">Your Local Weather</h4>
                                         <p>{this.props.userDetail.current_weather}</p> 
-                                        <h4 className="font-weight-bold">Current Temprature</h4>
+                                        <h4 className="font-weight-bold">Your Local Temperature</h4>
                                         <p>{this.props.userDetail.current_temperature}</p>
                                     </Tab>
                                     <Tab eventKey={2} title="Interests">

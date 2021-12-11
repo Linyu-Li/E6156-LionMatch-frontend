@@ -18,7 +18,7 @@ const userDetailsCard = (props) => {
                 <Image className="card-img-top img-thumbnail border-none" src={userPhoto} alt={props.user.nameFirst} />
                 <div className="card-body px-4">
                     {<div>
-                        <strong>Location</strong>
+                        <strong>Zip Code</strong>
                         <p>{props.user.postalCode}</p>
                     </div>}
                     <div>
