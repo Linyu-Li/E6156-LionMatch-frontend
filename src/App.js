@@ -34,7 +34,7 @@ class App extends Component {
                     <Route path="/logout" component={Logout}/>
                     <Route path="/users/:userId" component={UserDetails}/>
                     <Route path="/preference/:urlPrefId" component={UserPref}/>
-                    <Route path="/preference" component={UserPref}/>
+                    {/*<Route path="/preference" component={UserPref}/>*/}
                     <Route path="/userAvail/:uid/:id" component={Detail} />
                     <Route path="/userAvail/:uid" component={TimePage} />
                     <Route path="/" exact component={Home}/>

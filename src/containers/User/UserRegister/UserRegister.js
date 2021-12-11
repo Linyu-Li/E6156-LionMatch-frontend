@@ -206,7 +206,7 @@ class UserRegister extends Component {
         if (this.state.orientation) {
             formData['orientation'] = this.state.orientation.toLowerCase();
         }
-        
+
         this.props.onRegister( formData )
             .then(() => {
                 // back to non-registration mode after registration step
@@ -276,8 +276,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onRegister: ( user ) => {
             return new Promise((resolve, reject) => {
-                dispatch(actions.register(user))
-                resolve()
+                dispatch(actions.register(user));
+                resolve();
             });
         }
     };

@@ -75,7 +75,7 @@ export const getUserReview = (userId) => {
 export const addReview = (userId, review) => {
     return dispatch => {
         // const prefId = userId;
-        const data = { data: {review: review }};
+        const data = { data: {review: review } };
         axios.post(`${USR_REVIEW_URL}/users/${userId}/reviews`, data)
             .then((res) => {
                 dispatch(addReviewSuccess("done"));

@@ -190,7 +190,7 @@ const UserPref = ({ prefId, onGetPref, onUpdatePref, curPref, canceled }) => {
                         {formFields}
                         <ButtonToolbar className="float-right">
                             <Button bsStyle="success" onClick={submitHandler}>Update</Button>
-                            <Button onClick={canceled}>Cancel</Button>
+                            {/*<Button onClick={canceled}>Cancel</Button>*/}
                         </ButtonToolbar>
                     </Form>
                 </Col>

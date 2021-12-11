@@ -29,10 +29,10 @@ class UserDetails extends Component {
             reviewInputBox: "hidden",
             reviewInput: ""
         };
-        this.editReview = this.editReview.bind(this)
-        this.handleReviewChange = this.handleReviewChange.bind(this)
-        this.handleReviewSubmit = this.handleReviewSubmit.bind(this)
-        this.cancelReviewEdit = this.cancelReviewEdit.bind(this)
+        this.editReview = this.editReview.bind(this);
+        this.handleReviewChange = this.handleReviewChange.bind(this);
+        this.handleReviewSubmit = this.handleReviewSubmit.bind(this);
+        this.cancelReviewEdit = this.cancelReviewEdit.bind(this);
     }
 
     componentDidMount() {
@@ -49,9 +49,9 @@ class UserDetails extends Component {
         this.props.onSendMessage(this.props.user.id, message);
     }
 
-    sendLike = () => {
-        this.props.onSendLike(this.props.user.id, this.props.userDetail.id);
-    }
+    // sendLike = () => {
+    //     this.props.onSendLike(this.props.user.id, this.props.userDetail.id);
+    // }
 
     handleMessageChange = (message) => {
         this.setState(updateObject(this.state, {message: message.target.value}));    
@@ -80,7 +80,7 @@ class UserDetails extends Component {
         if (this.state.reviewInput.length > 0) {
             this.props.onUpdateReview(this.props.match.params.userId, this.state.reviewInput)
         }
-        this.setState({reviewInputBox: "hidden"})
+        this.setState({reviewInputBox: "hidden"});
     }
 
     render() {
@@ -88,20 +88,12 @@ class UserDetails extends Component {
         let userInfo = null;
         console.log("this.props.userDetail: "+JSON.stringify(this.props.userDetail, null, 4));
         if (this.props.userDetail) {
-
-            // const images = this.props.userDetail.photos.map(photo => {
-            //     return {
-            //         original: photo.url,
-            //         thumbnail: photo.url
-            //     }
-            // });
-
             userInfo = (
                 <Row>
                     <h1 className="mb-4 text-position">{this.props.userDetail.nameFirst}'s Profile</h1>
                     <Row>
                         <UserDetailsCard user={this.props.userDetail}>
-                            <p onClick={this.editReview}>Reviews: {this.props.userDetail.reviews}</p>
+                            <p onClick={this.editReview}>Reviews: {this.props.userDetail.reviews.split(',').join(', ')}</p>
                             <div hidden={this.state.reviewInputBox}>
                                 <input onChange={this.handleReviewChange}/>
                                 <ButtonGroup>
@@ -109,10 +101,10 @@ class UserDetails extends Component {
                                     <Button className="w-10" onClick={this.cancelReviewEdit}>Cancel</Button>
                                 </ButtonGroup>
                             </div>
-                            <ButtonGroup className="d-flex">
-                                <Button bsStyle="danger" className="w-100" onClick={this.sendLike}>Like</Button>
-                                <Button bsStyle="success" className="w-100" onClick={this.handleTabChange.bind(this, 4)}>Message</Button>
-                            </ButtonGroup>
+                            {/*<ButtonGroup className="d-flex">*/}
+                            {/*    <Button bsStyle="danger" className="w-100" onClick={this.sendLike}>Like</Button>*/}
+                            {/*    <Button bsStyle="success" className="w-100" onClick={this.handleTabChange.bind(this, 4)}>Message</Button>*/}
+                            {/*</ButtonGroup>*/}
                         </UserDetailsCard>
                         <Col md={8} className="mx-3">
                             <div className="bg-light card shadow-sm mb-10">
@@ -182,7 +174,12 @@ const mapDispatchToProps = dispatch => {
         onGetUser: (userId) => dispatch(actions.getUser(userId)),
         // onGetMessageThread: (id, recipientId) => dispatch(actions.getMessageThread(id, recipientId)),
         // onSendMessage: (id, message) => dispatch(actions.sendMessage(id, message)),
-        onUpdateReview: (id, review) => dispatch(actions.addReview(id, review)),
+        onUpdateReview: (id, review) => {
+            return new Promise((resolve, reject) => {
+                dispatch(actions.addReview(id, review));
+                resolve();
+            });
+        },
         // onSendLike: (id, recipientId) => dispatch( actions.sendLike(id, recipientId) )
     };
 };
