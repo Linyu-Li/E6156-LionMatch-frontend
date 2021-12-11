@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Navbar from '../../components/Navigation/Navbar/Navbar';
+import {instanceOf} from "prop-types";
 
 class Layout extends Component {
 
@@ -17,19 +18,18 @@ class Layout extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(JSON.stringify(state.auth, null, 4));
-    console.log(state.auth.user);
+    // console.log(JSON.stringify(state.auth, null, 4));
+    // console.log(state.auth.user);
     // console.log(JSON.parse(state.auth.user).userID);
-    console.log(state.auth.token);
-    console.log("userDetail: "+JSON.stringify(state.user.userDetail, null, 4));
+    // console.log(state.auth.token);
+    // console.log("userDetail: "+JSON.stringify(state.user.userDetail, null, 4));
+    const userInfo = state.auth.user ? state.auth.user : null;
     return {
         isAuthenticated: state.auth.token !== null,
         userDetail: state.user.userDetail,
-        userID: state.auth.user? JSON.parse(state.auth.user).userID : null,
-        // userPhoto: state.auth.user ? JSON.parse(state.auth.user).photoUrl : null,
-        usernameFirst: state.auth.user ? JSON.parse(state.auth.user).nameFirst : null
+        userID: userInfo ? userInfo.userID : null,
+        usernameFirst: userInfo ? userInfo.nameFirst : null
     }
-    
 }
 
 export default connect(mapStateToProps)(Layout);

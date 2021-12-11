@@ -45,7 +45,7 @@ class App extends Component {
                 <Route component={NotFound}/>
             </Switch>
         );
-        console.log("this.props.isAuthenticated: " + this.props.isAuthenticated);
+        // console.log("this.props.isAuthenticated: " + this.props.isAuthenticated);
         if ( this.props.isAuthenticated ) {
             routes = (
                 <Switch>
@@ -62,7 +62,7 @@ class App extends Component {
                 </Switch>
             );
         }
-        console.log("routes: "+routes);
+        // console.log("routes: "+routes);
 
         return (
             <Layout>

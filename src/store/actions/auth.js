@@ -43,13 +43,11 @@ export const auth = (email, password) => {
             .then(response => {
                 window.alert(`Got token: ${response.data.token}`);
                 localStorage.setItem('token', response.data.token);
-                console.log(typeof(response.data.user));
-                console.log(typeof(JSON.stringify(response.data.user)));
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 dispatch(authSuccess(response.data.token, response.data.user));
-            })
-            .catch(err => {
-                window.alert(err.response.data);    // should show message defined in auth() in app.py
+            }).catch(err => {
+                console.log(err);
+                // window.alert(err.response.data);    // should show message defined in auth() in app.py
                 dispatch(authFail(err));
             });
     };
@@ -61,7 +59,7 @@ export const authCheckState = () => {
         if (!token) {
             dispatch(logout());
         } else {            
-            const user = localStorage.getItem('user');
+            const user = JSON.parse(localStorage.getItem('user'));
             dispatch(authSuccess(token, user));
         }
     };
