@@ -21,7 +21,7 @@ class UserRegister extends Component {
             nameFirst: {
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'First name on ID'
+                    placeholder: 'First name'
                 },
                 value: null,
                 validation: {
@@ -32,7 +32,7 @@ class UserRegister extends Component {
             nameLast: {
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Last name on ID'
+                    placeholder: 'Last name'
                 },
                 value: null,
                 validation: {
@@ -190,11 +190,15 @@ class UserRegister extends Component {
         }
 
         let formFields = formElementsArray.map( formElement => (
-            <Input
-                key={formElement.id}
-                elementConfig={formElement.config.elementConfig}
-                value={formElement.config.value}
-                changed={( event ) => this.inputChangedHandler( event, formElement.id )} />
+            <>
+                <ControlLabel>{formElement.config.elementConfig.placeholder}</ControlLabel>
+                <Input
+                    key={formElement.id}
+                    elementConfig={formElement.config.elementConfig}
+                    value={formElement.config.value}
+                    changed={( event ) => this.inputChangedHandler( event, formElement.id )} />
+            </>
+
         ) );
 
         return (
@@ -205,7 +209,7 @@ class UserRegister extends Component {
                         <hr/>
                         <form>
                             <FormGroup>
-                                <ControlLabel>I am a</ControlLabel>
+                                <ControlLabel>My gender</ControlLabel>
                                 <Radio name="radioGroup" inline value="Male" checked={this.state.gender === "Male"} onChange={this.handleGenderChange}>Male</Radio>
                                 <Radio name="radioGroup" inline value="Female" checked={this.state.gender === "Female"} onChange={this.handleGenderChange}>Female</Radio>
                                 <Radio name="radioGroup" inline value="Other" checked={this.state.gender === "Other"} onChange={this.handleGenderChange}>Other</Radio>
