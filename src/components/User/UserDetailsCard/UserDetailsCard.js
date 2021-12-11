@@ -17,17 +17,25 @@ const userDetailsCard = (props) => {
             <div className="card shadow-sm mb-10">
                 <Image className="card-img-top img-thumbnail border-none" src={userPhoto} alt={props.user.nameFirst} />
                 <div className="card-body px-4">
-                    {<div>
+                    <div>
+                        <strong>First Name</strong>
+                        <p>{props.user.nameFirst ? props.user.nameFirst : '(not provided)'}</p>
+                    </div>
+                    <div>
+                        <strong>Last Name</strong>
+                        <p>{props.user.nameLast ? props.user.nameLast : '(not provided)'}</p>
+                    </div>
+                    <div>
                         <strong>Zip Code</strong>
                         <p>{props.user.postalCode}</p>
-                    </div>}
+                    </div>
                     <div>
                         <strong>Email</strong>
                         <p>{props.user.email}</p>
                     </div>
                     <div>
                         <strong>Gender</strong>
-                        <p>{props.user.gender}</p>
+                        <p>{props.user.gender ? props.user.gender : '(not provided)'}</p>
                     </div>
                     {/*div className="mb-10">
                         <strong>Last Active</strong>
