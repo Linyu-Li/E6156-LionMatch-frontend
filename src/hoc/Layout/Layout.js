@@ -18,11 +18,6 @@ class Layout extends Component {
 }
 
 const mapStateToProps = state => {
-    // console.log(JSON.stringify(state.auth, null, 4));
-    // console.log(state.auth.user);
-    // console.log(JSON.parse(state.auth.user).userID);
-    // console.log(state.auth.token);
-    // console.log("userDetail: "+JSON.stringify(state.user.userDetail, null, 4));
     const userInfo = state.auth.user ? state.auth.user : null;
     return {
         isAuthenticated: state.auth.token !== null,

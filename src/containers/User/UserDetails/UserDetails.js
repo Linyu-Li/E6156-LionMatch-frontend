@@ -7,7 +7,7 @@ import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Tab from 'react-bootstrap/lib/Tab';
 import Tabs from 'react-bootstrap/lib/Tabs';
-import ImageGallery from 'react-image-gallery';
+// import ImageGallery from 'react-image-gallery';
 import { connect } from 'react-redux';
 import UserMessages from '../../../components/User/UserMessages/UserMessages';
 import '../../../shared/card-syles.css';
@@ -172,7 +172,6 @@ class UserDetails extends Component {
 const mapStateToProps = state => {
     return {
         userDetail: state.user.userDetail,
-        // user: JSON.parse(state.auth.user),
         user: state.auth.user,
         messageThread: state.user.messageThread
     }
@@ -181,10 +180,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onGetUser: (userId) => dispatch(actions.getUser(userId)),
-        onGetMessageThread: (id, recipientId) => dispatch(actions.getMessageThread(id, recipientId)),
-        onSendMessage: (id, message) => dispatch(actions.sendMessage(id, message)),
+        // onGetMessageThread: (id, recipientId) => dispatch(actions.getMessageThread(id, recipientId)),
+        // onSendMessage: (id, message) => dispatch(actions.sendMessage(id, message)),
         onUpdateReview: (id, review) => dispatch(actions.addReview(id, review)),
-        onSendLike: (id, recipientId) => dispatch( actions.sendLike(id, recipientId) )
+        // onSendLike: (id, recipientId) => dispatch( actions.sendLike(id, recipientId) )
     };
 };
 
