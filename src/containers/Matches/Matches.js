@@ -19,14 +19,21 @@ class Matches extends Component {
         this.props.onGetUsers(null, null, null, 'Likers');
     }
 
-    getMembersWhoLikeMe = () => {
-        this.setState({filter: 'Likers'});
-        this.props.onGetUsers(this.props.pagination.currentPage, this.props.pagination.itemsPerPage, null, 'Likers');
-    }
+    // getMembersWhoLikeMe = () => {
+    //     this.setState({filter: 'Likers'});
+    //     this.props.onGetUsers(this.props.pagination.currentPage, this.props.pagination.itemsPerPage, null, 'Likers');
+    // }
+    //
+    // getMembersWhoILike = () => {
+    //     this.setState({filter: 'Likees'});
+    //     this.props.onGetUsers(this.props.pagination.currentPage, this.props.pagination.itemsPerPage, null, 'Likees');
+    // }
 
-    getMembersWhoILike = () => {
-        this.setState({filter: 'Likees'});
-        this.props.onGetUsers(this.props.pagination.currentPage, this.props.pagination.itemsPerPage, null, 'Likees');
+    // Get match by GET /api/matchUser/<uid>
+    getMatch = (id) => {
+        if(id!=null) {
+            fetch("/matchUser/" + id, {method: 'GET'});
+        }
     }
 
     pageChangeHandler = (event) => {
@@ -54,8 +61,9 @@ class Matches extends Component {
         return(
             <Grid>
                 <ButtonGroup className="d-flex-default">
-                    <Button bsStyle="danger" onClick={this.getMembersWhoLikeMe}>Members who like me</Button>
-                    <Button bsStyle="danger" onClick={this.getMembersWhoILike}>Members who I like</Button>
+                    {/*<Button bsStyle="danger" onClick={this.getMembersWhoLikeMe}>Members who like me</Button>*/}
+                    {/*<Button bsStyle="danger" onClick={this.getMembersWhoILike}>Members who I like</Button>*/}
+                    <Button primary bsStyle="danger" bsSize="large" onClick={this.getMatch("5")}>Get Match</Button>
                 </ButtonGroup>
                 <div className="d-flex-default">
                     {users}                  
