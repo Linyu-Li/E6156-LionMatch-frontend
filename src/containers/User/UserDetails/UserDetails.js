@@ -85,7 +85,10 @@ class UserDetails extends Component {
 
     render() {
         let userInfo = null;
-        // console.log("this.props.userDetail: "+JSON.stringify(this.props.userDetail, null, 4));
+        console.log("this.props.userDetail: "+JSON.stringify(this.props.userDetail, null, 4));
+        console.log("this.props.user: "+JSON.stringify(this.props.user, null, 4));
+        let prefURL = `/preference/${this.props.user.userID}`;
+        let scheduleURL = ``
         if (this.props.userDetail) {
             userInfo = (
                 <Row>
@@ -125,7 +128,7 @@ class UserDetails extends Component {
                                         {/* <h4 className="font-weight-bold">Interests</h4>
                                         <p>{this.props.userDetail.interests}</p> */}
                                         <Nav>
-                                            <LinkContainer to="/preference/1">
+                                            <LinkContainer to={prefURL}>
                                                 <NavItem>
                                                     Interests
                                                 </NavItem>
@@ -137,13 +140,13 @@ class UserDetails extends Component {
                                             {/*<ImageGallery items={images}/>*/}
                                         </div>                                    
                                     </Tab>
-                                    <Tab eventKey={4} title="Messages">
+                                    {/* <Tab eventKey={4} title="Messages">
                                         <UserMessages 
                                             recipientId={this.props.userDetail.id} 
                                             messages={this.props.messageThread} 
                                             sendMessage={(event) => this.sendMessageHandler(event)} 
                                             onMessageChanged={(event) => this.handleMessageChange(event)}/>
-                                    </Tab>
+                                    </Tab> */}
                                 </Tabs>
                             </div>                            
                         </Col>
