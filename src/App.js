@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch, withRouter, BrowserRouter as Router} from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.css';
 import Logout from './containers/Auth/Logout/Logout';
 import Home from './containers/Home/Home';
@@ -9,6 +9,7 @@ import UserDetails from './containers/User/UserDetails/UserDetails';
 import UserPref from "./containers/UserPref/UserPref";
 import NotFound from './containers/NotFound';
 import { TimePage } from "./containers/TimeSlot";
+import { AvailPage } from "./containers/MatchAvail";
 import { Detail } from "./containers/detailView";
 import Layout from './hoc/Layout/Layout';
 import * as actions from './store/actions/index';
@@ -34,7 +35,7 @@ class App extends Component {
                     <Route path="/logout" component={Logout}/>
                     <Route path="/users/:userId" component={UserDetails}/>
                     <Route path="/preference/:urlPrefId" component={UserPref}/>
-                    {/*<Route path="/preference" component={UserPref}/>*/}
+                    <Route path="/matchAvail/:uid/:limit/:offset" component={AvailPage} />
                     <Route path="/userAvail/:uid/:id" component={Detail} />
                     <Route path="/userAvail/:uid" component={TimePage} />
                     <Route path="/" exact component={Home}/>

@@ -14,7 +14,7 @@ export const TimePage = (props) => {
         StartTime:"",
         EndTime:""
     });
-    console.log(uid)
+    // console.log(uid)
 
     useEffect(() => {
         // Fetch the list of times API
@@ -28,6 +28,7 @@ export const TimePage = (props) => {
     }, [uid]);
 
     const handleFormChange = (e) => {
+        // console.log(e.target.name, e.target.value)
         setAddTime({
             ...addTime,
             [e.target.name]: e.target.value,
@@ -35,6 +36,14 @@ export const TimePage = (props) => {
     };
 
     const handleFormSubmit = () => {
+        if (!addTime.StartTime || !addTime.EndTime) {
+            window.alert('Please select a start hour and an end hour!')
+            return;
+        }
+        if (addTime.StartTime > addTime.EndTime) {
+            window.alert('The end hour cannot be earlier than the start hour!')
+            return;
+        }
         // Creates time suing the API
         fetch(SCHEDULER_URL + `/availability/users/${uid}`, {
             method: "POST",

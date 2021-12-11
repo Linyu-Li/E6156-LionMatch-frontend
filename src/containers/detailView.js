@@ -21,8 +21,8 @@ export const Detail = (props) => {
         EndTime: ""
     });
 
-    console.log(id)
-    console.log(uid)
+    // console.log(id)
+    // console.log(uid)
 
     useEffect(() => {
         fetch(SCHEDULER_URL + `/timeSlot/${id}`)
@@ -39,6 +39,14 @@ export const Detail = (props) => {
     };
 
     const handleFormSubmit = () => {
+        if (!updateTime.StartTime || !updateTime.EndTime) {
+            window.alert('Please select a start hour and an end hour!')
+            return;
+        }
+        if (updateTime.StartTime > updateTime.EndTime) {
+            window.alert('The end hour cannot be earlier than the start hour!')
+            return;
+        }
         fetch(SCHEDULER_URL + `/availability/users/${uid}/${id}`, {
             method: "PUT",
             body: JSON.stringify({
@@ -69,7 +77,7 @@ export const Detail = (props) => {
             />
             <br/>
             {time.map((data) => (
-                <div key="id">Detail: {data.Year} - {data.Month} - {data.Day} {data.StartTime} - {data.EndTime}</div>
+                <div key="id">Current Detail: {data.Month}/{data.Day}/{data.Year} {data.StartTime} - {data.EndTime}</div>
             ))}
             <br/>
             <Delete id={id} uid={props.match.params.uid} props={props}/><p>Fill the above to update</p>
