@@ -19,10 +19,10 @@ class Matches extends Component {
         if (userId !== null) {
             fetch(SCHEDULER_URL + "/matchUser/" + userId, {method: 'GET'})
                 .then(response => {
-                    if (response.ok) {
-                        console.log(response)
-                        return response.json();
-                    }
+                        if (response.ok) {
+                            console.log(response)
+                            return response.json();
+                        }
                     })
                 .then(response => {
                         if (response > 0) {

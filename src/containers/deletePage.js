@@ -15,7 +15,7 @@ export const Delete = ({id,uid, props}) =>{
         })
             // .then(response => response.json())
              .then(data => {
-                 props.history.push("/api/userAvail/"+props.match.params.uid)
+                 props.history.push("/userAvail/"+props.match.params.uid)
              })
 
     }

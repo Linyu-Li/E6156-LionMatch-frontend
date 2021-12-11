@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom"
 
 export const Card = ({ listOfTime, uid }) => {
+    console.log(listOfTime);
     return (
         <>
             {listOfTime.map(time => {
