@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import * as actionTypes from './actionTypes';
-import {USR_ADDR_URL, USR_REVIEW_URL} from "../../constants";
+import {USR_ADDR_URL, USR_REVIEW_URL, COMPOSITION_URL} from "../../constants";
 
 
 const MAX_REVIEW_DISPLAY = 5
@@ -29,7 +29,8 @@ export const userRegisterFail = (error) => {
 export const register = (userData) => {
     return dispatch => {
         dispatch(userRegisterStart());
-        const url = `${USR_ADDR_URL}/users`;
+        // const url = `${USR_ADDR_URL}/users`;
+        const url = `${COMPOSITION_URL}/create`
         axios.post(url, userData)
             .then(response => {
                 dispatch(userRegisterSuccess());
