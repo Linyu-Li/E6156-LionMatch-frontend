@@ -85,10 +85,10 @@ class UserDetails extends Component {
 
     render() {
         let userInfo = null;
-        console.log("this.props.userDetail: "+JSON.stringify(this.props.userDetail, null, 4));
-        console.log("this.props.user: "+JSON.stringify(this.props.user, null, 4));
+        // console.log("this.props.userDetail: "+JSON.stringify(this.props.userDetail, null, 4));
+        // console.log("this.props.user: "+JSON.stringify(this.props.user, null, 4));
         let prefURL = `/preference/${this.props.user.userID}`;
-        let scheduleURL = ``
+        // let scheduleURL = ``
         if (this.props.userDetail) {
             userInfo = (
                 <Row>
