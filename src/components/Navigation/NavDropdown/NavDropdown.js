@@ -12,6 +12,7 @@ library.add(faUser);
 library.add(faSignOutAlt);
 
 const navDropdown = ({ usernameFirst }) => {
+    console.log(usernameFirst);
     let message = 'Welcome ' + usernameFirst;
     return (
         <Nav pullRight>            

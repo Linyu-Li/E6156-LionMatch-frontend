@@ -4,10 +4,11 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const navbarItems = (props) => {
-
+    console.log(props.userID);
+    let url = `/matches/${props.userID}`
     return (
         <Nav>
-            <LinkContainer to="/matches">
+            <LinkContainer to={url}>
                 <NavItem>Matches</NavItem>
             </LinkContainer>
             {/*<LinkContainer to="/lists">*/}

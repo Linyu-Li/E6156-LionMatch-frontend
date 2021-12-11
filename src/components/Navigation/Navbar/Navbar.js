@@ -15,7 +15,7 @@ const navbar = (props) => {
     if(props.isAuth){
         navContent = (
             <div>
-                <NavbarItems/>                
+                <NavbarItems userID={props.userID}/>                
                 <NavDropdown usernameFirst={props.usernameFirst}/>
                 <UserPhoto userPhoto={props.userPhoto} userID={props.userID}/>
             </div>            
