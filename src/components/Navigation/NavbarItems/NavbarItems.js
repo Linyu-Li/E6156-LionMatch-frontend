@@ -10,9 +10,9 @@ const navbarItems = (props) => {
             <LinkContainer to="/matches">
                 <NavItem>Matches</NavItem>
             </LinkContainer>
-            <LinkContainer to="/lists">
-                <NavItem>Lists</NavItem>
-            </LinkContainer>
+            {/*<LinkContainer to="/lists">*/}
+            {/*    <NavItem>Lists</NavItem>*/}
+            {/*</LinkContainer>*/}
         </Nav>
     );
 }

@@ -14,8 +14,8 @@
 .navbar-inverse .navbar-nav > .active > a, 
 .navbar-inverse .navbar-nav > .active > a:focus, 
 .navbar-inverse .navbar-nav > .active > a:hover {
-    border-bottom: 2px solid #fafafa;
-    background-color: #ffffff;
+    border-bottom: 2px solid #d50000;
+    background-color: #005193;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
