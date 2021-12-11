@@ -1,6 +1,6 @@
 import React from "react"
 
-export const Form = ({input, onFormChange, onFormSubmit}) => {
+const TimeForm = ({input, onFormChange, onFormSubmit}) => {
 
     const handleChange = (event)=>{
         // handle what the form does when you type in it
@@ -15,40 +15,26 @@ export const Form = ({input, onFormChange, onFormSubmit}) => {
     }
 
     return(
-        // <>
-        //     <form onSubmit={handleSubmit}>
-        //         <div><input className='form-class' type='text' required value={input} onChange={handleChange}></input></div>
-   //              <input type='submit'></input>
-        //     </form>
-        // </>
         <>
             <form onSubmit={handleSubmit}>
-                {/*<div>*/}
-                {/*    <label> Id </label>*/}
-                {/*    <input className='form-class' name="Id" type='text' required value={input.Id} onChange={handleChange}></input>*/}
-                {/*</div>*/}
-                <div>
+                <div style={{'padding': 10}}>
                     <label>Year</label>
+                    <br/>
                     <input className='form-class' name="Year" type='text' required value={input.Year} onChange={handleChange}/>
                 </div>
-                <div>
+                <div style={{'padding': 10}}>
                     <label>Month</label>
+                    <br/>
                     <input className='form-class' name="Month" type='text' required value={input.Month} onChange={handleChange}/>
                 </div>
-                <div>
+                <div style={{'padding': 10}}>
                     <label>Day</label>
+                    <br/>
                     <input className='form-class' name="Day" type='text' required value={input.Day} onChange={handleChange}/>
                 </div>
-                {/*<div>*/}
-                {/*    <label>Start Time</label>*/}
-                {/*    <input className='form-class' name="StartTime" type='text' required value={input.StartTime} onChange={handleChange}></input>*/}
-                {/*</div>*/}
-                {/*<div>*/}
-                {/*    <label>EndTime</label>*/}
-                {/*    <input className='form-class' name="EndTime" type='text' required value={input.EndTime} onChange={handleChange}></input>*/}
-                {/*</div>*/}
-                <div>
+                <div style={{'padding': 10}}>
                     <label>Start Time</label>
+                    <br/>
                     <select name="StartTime" value={input.StartTime} onChange={handleChange}>
                         <option value=""/>
                         <option value="00:00">00:00</option>
@@ -77,8 +63,9 @@ export const Form = ({input, onFormChange, onFormSubmit}) => {
                         <option value="23:00">23:00</option>
                     </select>
                 </div>
-                <div>
+                <div style={{'padding': 10}}>
                     <label>End Time</label>
+                    <br/>
                     <select name="EndTime" value={input.EndTime} onChange={handleChange}>
                         <option value=""/>
                         <option value="00:00">00:00</option>
@@ -107,8 +94,10 @@ export const Form = ({input, onFormChange, onFormSubmit}) => {
                         <option value="23:00">23:00</option>
                     </select>
                 </div>
-                <input type='submit'/>
+                <input type='submit' style={{'margin': 10}}/>
             </form>
         </>
     )
 }
+
+export default TimeForm;

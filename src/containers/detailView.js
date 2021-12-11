@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
-import {useParams} from "react-router";
 import {Link} from "react-router-dom";
-import {Delete} from "../containers/deletePage";
-import {Form} from "../containers/form";
-//import { useHistory } from "react-router-dom";
+import {Delete} from "./deletePage";
+import TimeForm from "./form";
 import {SCHEDULER_URL} from "../constants";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
 
 
 export const Detail = (props) => {
@@ -80,29 +81,33 @@ export const Detail = (props) => {
     };
 
     return (
-        <div>
-            {!disableEdit && (
-                <>
-                    <Form
-                        input={updateTime}
-                        onFormChange={handleFormChange}
-                        onFormSubmit={handleFormSubmit}
-                    />
-                    <p>Fill the above to update</p>
+        <Grid>
+            <Row>
+                <Col xs={12} md={10} lg={6}>
+                    {!disableEdit && (
+                        <>
+                            <TimeForm
+                                input={updateTime}
+                                onFormChange={handleFormChange}
+                                onFormSubmit={handleFormSubmit}
+                            />
+                            <p>Fill the above to update</p>
+                            <br/>
+                        </>
+                    )}
+                    {time.map((data) => (
+                        <div key="id">Current Detail: {data.Month}/{data.Day}/{data.Year} {data.StartTime} - {data.EndTime}</div>
+                    ))}
                     <br/>
-                </>
-            )}
-            {time.map((data) => (
-                <div key="id">Current Detail: {data.Month}/{data.Day}/{data.Year} {data.StartTime} - {data.EndTime}</div>
-            ))}
-            <br/>
-            {!disableEdit && (
-                <>
-                    <Delete id={id} uid={props.match.params.uid} props={props}/>
-                    <br/>
-                </>
-            )}
-            <Link to={'/userAvail/' + props.match.params.uid}>Go Back to List</Link>
-        </div>
+                    {!disableEdit && (
+                        <div style={{'margin': 10}}>
+                            <Delete id={id} uid={props.match.params.uid} props={props}/>
+                            <br/>
+                        </div>
+                    )}
+                    <Link to={'/userAvail/' + props.match.params.uid}>Go Back to List</Link>
+                </Col>
+            </Row>
+        </Grid>
     );
 };

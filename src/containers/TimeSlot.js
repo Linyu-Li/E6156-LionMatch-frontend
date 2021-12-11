@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {Card} from "./cards";
-import {Form} from "./form";
+import TimeForm from "./form";
 import {SCHEDULER_URL} from "../constants";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
+
 
 export const TimePage = (props) => {
     const uid = props.match.params.uid;
@@ -97,15 +101,19 @@ export const TimePage = (props) => {
     // };
 
     return (
-        <>
-            {!disableEdit && (
-                <Form
-                    input={addTime}
-                    onFormChange={handleFormChange}
-                    onFormSubmit={handleFormSubmit}
-                />
-            )}
-            <Card listOfTime={time} uid={props.match.params.uid}/>
-        </>
+        <Grid>
+            <Row>
+                <Col xs={12} md={10} lg={6}>
+                    {!disableEdit && (
+                        <TimeForm
+                            input={addTime}
+                            onFormChange={handleFormChange}
+                            onFormSubmit={handleFormSubmit}
+                        />
+                    )}
+                    <Card listOfTime={time} uid={props.match.params.uid}/>
+                </Col>
+            </Row>
+        </Grid>
     );
 };
