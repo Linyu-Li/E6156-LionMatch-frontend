@@ -4,11 +4,10 @@ import Navbar from '../../components/Navigation/Navbar/Navbar';
 import {instanceOf} from "prop-types";
 
 class Layout extends Component {
-
     render() {
         return (            
             <div>
-                <Navbar isAuth={this.props.isAuthenticated} userID={this.props.userID} userPhoto={this.props.userPhoto} usernameFirst={this.props.usernameFirst}/>
+                <Navbar isAuth={this.props.isAuthenticated} userID={this.props.userID} usernameFirst={this.props.userDetail ? this.props.userDetail.nameFirst : ''}/>
                 <main>
                     {this.props.children}
                 </main>

@@ -84,9 +84,8 @@ class UserDetails extends Component {
     }
 
     render() {
-
         let userInfo = null;
-        console.log("this.props.userDetail: "+JSON.stringify(this.props.userDetail, null, 4));
+        // console.log("this.props.userDetail: "+JSON.stringify(this.props.userDetail, null, 4));
         if (this.props.userDetail) {
             userInfo = (
                 <Row>
@@ -120,7 +119,7 @@ class UserDetails extends Component {
                                         <h4 className="font-weight-bold">Your Local Weather</h4>
                                         <p>{this.props.userDetail.current_weather}</p> 
                                         <h4 className="font-weight-bold">Your Local Temperature</h4>
-                                        <p>{this.props.userDetail.current_temperature}</p>
+                                        <p>{this.props.userDetail.current_temperature + ' F°'}</p>
                                     </Tab>
                                     <Tab eventKey={2} title="Interests">
                                         {/* <h4 className="font-weight-bold">Interests</h4>
