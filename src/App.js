@@ -30,7 +30,7 @@ class App extends Component {
         if ( this.props.isAuthenticated ) {
             routes = (
                 <Switch>
-                    <Route path="/matches" component={Matches}/>
+                    <Route path="/matches/:userId" component={Matches}/>
                     <Route path="/logout" component={Logout}/>
                     <Route path="/users/:userId" component={UserDetails}/>
                     <Route path="/preference/:urlPrefId" component={UserPref}/>

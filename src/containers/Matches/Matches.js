@@ -17,19 +17,20 @@ class Matches extends Component {
 
     componentDidMount() {
         const userId = this.props.match.params.userId;
-        this.props.onGetUser(userId);
     }
 
     // Get match by GET /api/matchUser/<uid>
-    getMatch = (userId) => {
+    getMatch = function(userId) {
         if (userId !== null) {
-            fetch(SCHEDULER_URL + "/matchUser/" + userId, {method: 'GET'});
+            let matchid = fetch(SCHEDULER_URL + "/matchUser/" + userId, {method: 'GET'});
+            console.log(matchid)
+            return matchid;
         }
     }
 
     routeChange() {
-        let matchid = this.getMatch(this.props.match.params.userId);
-        let path = `users/` + matchid;
+        // let path = `/users/` + this.getMatch(this.props.match.params.userId);
+        let path = `/users/` + this.props.match.params.userId;
         this.props.history.push(path);
   }
 
