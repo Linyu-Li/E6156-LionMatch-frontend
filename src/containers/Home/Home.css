@@ -1,6 +1,6 @@
 .background {
-  /* background-image: url("../../assets/"); */
-  background-color: #9BCBEB;
+  background-image: url('../../assets/lionblue.png');
+  /* background-color: #9BCBEB; */
   background-position: bottom left;
   background-repeat: no-repeat;
   background-size: cover;

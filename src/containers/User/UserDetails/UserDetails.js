@@ -91,7 +91,7 @@ class UserDetails extends Component {
         // let scheduleURL = ``
         if (this.props.userDetail) {
             userInfo = (
-                <Row>
+                <Row className="background">
                     <h1 className="mb-4 text-position">{this.props.userDetail.nameFirst}'s Profile</h1>
                     <Row>
                         <UserDetailsCard user={this.props.userDetail}>
@@ -135,12 +135,12 @@ class UserDetails extends Component {
                                             </LinkContainer>     
                                         </Nav>
                                     </Tab>
-                                    <Tab eventKey={3} title="Photos">
+                                    {/* <Tab eventKey={3} title="Photos">
                                         <div className="img-wrapper">
-                                            {/*<ImageGallery items={images}/>*/}
+                                            <ImageGallery items={images}/>
                                         </div>                                    
                                     </Tab>
-                                    {/* <Tab eventKey={4} title="Messages">
+                                    <Tab eventKey={4} title="Messages">
                                         <UserMessages 
                                             recipientId={this.props.userDetail.id} 
                                             messages={this.props.messageThread} 

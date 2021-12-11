@@ -38,7 +38,7 @@ class Matches extends Component {
 
     render() {
         return(
-            <Grid>
+            <Grid className="background">
                 <ButtonGroup className="d-flex-default">
                     <Button
                         primary
