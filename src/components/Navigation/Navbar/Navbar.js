@@ -5,21 +5,19 @@ import Logo from '../../Logo/Logo';
 import UserPhoto from '../../User/UserPhoto/UserPhoto';
 import NavbarItems from '../NavbarItems/NavbarItems';
 import NavDropdown from '../NavDropdown/NavDropdown';
-import { LinkContainer } from 'react-router-bootstrap';
 import './Navbar.css';
 
 const navbar = (props) => {
 
     let navContent = <Login/>;
-    console.log("props.isAuth: " + props.isAuth);
+    console.log("props.userID: " + props.userID); 
+    console.log("props.usernameFirst: " + props.usernameFirst);
     if(props.isAuth){
         navContent = (
             <div>
                 <NavbarItems/>                
                 <NavDropdown usernameFirst={props.usernameFirst}/>
-                <LinkContainer to={`/users/${props.userID}`}>
-                <UserPhoto userPhoto={props.userPhoto}/>
-                </LinkContainer>
+                <UserPhoto userPhoto={props.userPhoto} userID={props.userID}/>
             </div>            
         );
     }

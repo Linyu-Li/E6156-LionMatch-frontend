@@ -17,13 +17,17 @@ class Layout extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(JSON.stringify(state.auth, null, 4));
     console.log(state.auth.user);
+    // console.log(JSON.parse(state.auth.user).userID);
     console.log(state.auth.token);
+    console.log("userDetail: "+JSON.stringify(state.user.userDetail, null, 4));
     return {
         isAuthenticated: state.auth.token !== null,
-        userID: state.auth.user? state.auth.user.userID : null
+        userDetail: state.user.userDetail,
+        userID: state.auth.user? JSON.parse(state.auth.user).userID : null,
         // userPhoto: state.auth.user ? JSON.parse(state.auth.user).photoUrl : null,
-        // usernameFirst: state.auth.user ? JSON.parse(state.auth.user).nameFirst : null
+        usernameFirst: state.auth.user ? JSON.parse(state.auth.user).nameFirst : null
     }
     
 }

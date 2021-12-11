@@ -41,9 +41,11 @@ export const auth = (email, password) => {
         let url = USR_ADDR_URL + '/auth';
         axios.post(url, authData)
             .then(response => {
-                window.alert(`Got token: ${response.data.token}`)
+                window.alert(`Got token: ${response.data.token}`);
                 localStorage.setItem('token', response.data.token);
-                localStorage.setItem('user', response.data.user);
+                console.log(typeof(response.data.user));
+                console.log(typeof(JSON.stringify(response.data.user)));
+                localStorage.setItem('user', JSON.stringify(response.data.user));
                 dispatch(authSuccess(response.data.token, response.data.user));
             })
             .catch(err => {

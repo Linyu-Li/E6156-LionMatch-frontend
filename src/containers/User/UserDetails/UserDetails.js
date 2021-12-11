@@ -16,6 +16,9 @@ import { updateObject } from '../../../shared/utility';
 import * as actions from '../../../store/actions/index';
 import './UserDetails.css';
 import UserDetailsCard from '../../../components/User/UserDetailsCard/UserDetailsCard';
+import Nav from 'react-bootstrap/lib/Nav';
+import NavItem from 'react-bootstrap/lib/NavItem';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class UserDetails extends Component {
     constructor(props) {
@@ -75,7 +78,7 @@ class UserDetails extends Component {
 
     handleReviewSubmit() {
         if (this.state.reviewInput.length > 0) {
-            this.props.onUpdateReivew(this.props.match.params.userId, this.state.reviewInput)
+            this.props.onUpdateReview(this.props.match.params.userId, this.state.reviewInput)
         }
         this.setState({reviewInputBox: "hidden"})
     }
@@ -83,7 +86,7 @@ class UserDetails extends Component {
     render() {
 
         let userInfo = null;
-        console.log("this.props.userDetail: "+this.props.userDetail)
+        console.log("this.props.userDetail: "+JSON.stringify(this.props.userDetail, null, 4));
         if (this.props.userDetail) {
 
             // const images = this.props.userDetail.photos.map(photo => {
@@ -98,7 +101,7 @@ class UserDetails extends Component {
                     <h1 className="mb-4 text-position">{this.props.userDetail.nameFirst}'s Profile</h1>
                     <Row>
                         <UserDetailsCard user={this.props.userDetail}>
-                            <p onClick={this.editReview}>{this.props.userDetail.reviews}</p>
+                            <p onClick={this.editReview}>Reviews: {this.props.userDetail.reviews}</p>
                             <div hidden={this.state.reviewInputBox}>
                                 <input onChange={this.handleReviewChange}/>
                                 <ButtonGroup>
@@ -122,10 +125,21 @@ class UserDetails extends Component {
                                         <p className="mb-10">{this.props.userDetail.introduction}</p>
                                         <h4 className="font-weight-bold">Looking For</h4>
                                         <p>{this.props.userDetail.lookingFor}</p>
+                                        <h4 className="font-weight-bold">Current Weather</h4>
+                                        <p>{this.props.userDetail.current_weather}</p> 
+                                        <h4 className="font-weight-bold">Current Temprature</h4>
+                                        <p>{this.props.userDetail.current_temperature}</p>
                                     </Tab>
                                     <Tab eventKey={2} title="Interests">
-                                        <h4 className="font-weight-bold">Interests</h4>
-                                        <p>{this.props.userDetail.interests}</p>
+                                        {/* <h4 className="font-weight-bold">Interests</h4>
+                                        <p>{this.props.userDetail.interests}</p> */}
+                                        <Nav>
+                                            <LinkContainer to="/preference/1">
+                                                <NavItem>
+                                                    Interests
+                                                </NavItem>
+                                            </LinkContainer>     
+                                        </Nav>
                                     </Tab>
                                     <Tab eventKey={3} title="Photos">
                                         <div className="img-wrapper">
@@ -169,7 +183,7 @@ const mapDispatchToProps = dispatch => {
         onGetUser: (userId) => dispatch(actions.getUser(userId)),
         onGetMessageThread: (id, recipientId) => dispatch(actions.getMessageThread(id, recipientId)),
         onSendMessage: (id, message) => dispatch(actions.sendMessage(id, message)),
-        onUpdateReivew: (id, review) => dispatch(actions.addReview(id, review)),
+        onUpdateReview: (id, review) => dispatch(actions.addReview(id, review)),
         onSendLike: (id, recipientId) => dispatch( actions.sendLike(id, recipientId) )
     };
 };

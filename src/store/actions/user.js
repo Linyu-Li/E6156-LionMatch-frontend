@@ -219,7 +219,14 @@ export const getUser = (userId) => {
                 axios.get(`${USR_ADDR_URL}/address/${response.data.addressID}`)
                 .then(res => {
                     response.data.postalCode = res.data.postalCode
-                    dispatch(getUserSuccess(response.data));                    
+                    axios.get(`${USR_ADDR_URL}/users/${userId}/weather`)
+                    .then(res => {
+
+                        response.data.current_weather = res.data.current_weather
+                        response.data.current_temperature = res.data.current_temperature
+                        dispatch(getUserSuccess(response.data));   
+                    })
+                                     
                 })
             })
         })

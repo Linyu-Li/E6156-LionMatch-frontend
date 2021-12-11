@@ -11,8 +11,8 @@ import './NavDropdown.css';
 library.add(faUser);
 library.add(faSignOutAlt);
 
-const navDropdown = ({ nameFirst }) => {
-    let message = 'Welcome ' + nameFirst;
+const navDropdown = ({ usernameFirst }) => {
+    let message = 'Welcome ' + usernameFirst;
     return (
         <Nav pullRight>            
             <NavDropdown title={message} id="basic-nav-dropdown">
