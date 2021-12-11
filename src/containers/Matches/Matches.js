@@ -40,8 +40,14 @@ class Matches extends Component {
         return(
             <Grid>
                 <ButtonGroup className="d-flex-default">
-                    {/*<Button primary bsStyle="danger" bsSize="large" onClick={() => this.getMatch("5")}>Get Match</Button>*/}
-                    <Button primary bsStyle="danger" bsSize="large" onClick={this.getMatch(this.props.match.params.userId)}>Get Match</Button>
+                    <Button
+                        primary
+                        bsStyle="danger"
+                        bsSize="large" 
+                        onClick={(ev) => { ev.preventDefault(); this.getMatch(this.props.match.params.userId); }}
+                    >
+                        Get Match!
+                    </Button>
                 </ButtonGroup>
             </Grid>
         );
