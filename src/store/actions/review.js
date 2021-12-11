@@ -79,6 +79,7 @@ export const addReview = (userId, review) => {
         axios.post(`${USR_REVIEW_URL}/users/${userId}/reviews`, data)
             .then((res) => {
                 dispatch(addReviewSuccess("done"));
+                window.location.reload();
             })
             .catch(err => dispatch(addReviewFail(err)));
     };

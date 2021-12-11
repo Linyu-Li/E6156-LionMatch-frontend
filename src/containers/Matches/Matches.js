@@ -43,7 +43,7 @@ class Matches extends Component {
                     <Button
                         primary
                         bsStyle="danger"
-                        bsSize="large" 
+                        bsSize="large"
                         onClick={(ev) => { ev.preventDefault(); this.getMatch(this.props.match.params.userId); }}
                     >
                         Get Match!
