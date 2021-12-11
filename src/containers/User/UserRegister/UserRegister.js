@@ -51,50 +51,6 @@ class UserRegister extends Component {
                 },
                 valid: false
             },
-            // affiliatedCollege: {
-            //     elementConfig: {
-            //         type: 'text',
-            //         placeholder: 'affiliated school/college'
-            //     },
-            //     value: null,
-            //     validation: {
-            //         required: false  // for debug purpose
-            //     },
-            //     valid: false
-            // },
-            // dateOfBirth: {
-            //     elementConfig: {
-            //         type: 'date',
-            //         placeholder: 'Date Of Birth'
-            //     },
-            //     value: null,
-            //     validation: {
-            //         required: false  // for debug purpose
-            //     },
-            //     valid: false
-            // },
-            // city: {
-            //     elementConfig: {
-            //         type: 'text',
-            //         placeholder: 'City'
-            //     },
-            //     value: null,
-            //     validation: {
-            //         required: false  // for debug purpose
-            //     },
-            //     valid: false
-            // },
-            // country: {
-            //     elementConfig: {
-            //         type: 'text',
-            //         placeholder: 'Country'
-            //     },
-            //     value: null,
-            //     validation: {
-            //         required: false  // for debug purpose
-            //     },
-            //     valid: false
-            // },
             address: {
                 elementConfig: {
                     type: 'text',
@@ -138,9 +94,77 @@ class UserRegister extends Component {
                     required: true
                 },
                 valid: false
-            }
+            },
+            movie: {
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Favorite Movies'
+                },
+                value: null,
+                validation: {
+                    required: false
+                },
+                valid: false
+            },
+            book: {
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Favorite Books'
+                },
+                value: null,
+                validation: {
+                    required: false
+                },
+                valid: false
+            },
+            music: {
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Favorite Music'
+                },
+                value: null,
+                validation: {
+                    required: false
+                },
+                valid: false
+            },
+            sport: {
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Favorite Sports'
+                },
+                value: null,
+                validation: {
+                    required: false
+                },
+                valid: false
+            },
+            hobby: {
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Other Hobbies'
+                },
+                value: null,
+                validation: {
+                    required: false
+                },
+                valid: false
+            },
+            major: {
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your University/College Major'
+                },
+                value: null,
+                validation: {
+                    required: false
+                },
+                valid: false
+            },
+
         },
-        gender: 'Male'
+        gender: null,
+        orientation: null,
     }
 
     inputChangedHandler = ( event, controlName ) => {
@@ -159,6 +183,12 @@ class UserRegister extends Component {
         });
     };
 
+    handleOrientChange = orient => {
+        this.setState({
+            orientation: orient.target.value
+        });
+    };
+
     submitHandler = ( event ) => {
         event.preventDefault();
 
@@ -170,7 +200,13 @@ class UserRegister extends Component {
             }
         }
 
-        formData['Gender'] = this.state.gender.toLowerCase();
+        if (this.state.gender) {
+            formData['Gender'] = this.state.gender.toLowerCase();
+        }
+        if (this.state.orientation) {
+            formData['orientation'] = this.state.orientation.toLowerCase();
+        }
+        
         this.props.onRegister( formData )
             .then(() => {
                 // back to non-registration mode after registration step
@@ -209,13 +245,21 @@ class UserRegister extends Component {
                         <hr/>
                         <form>
                             <FormGroup>
-                                <ControlLabel>My gender</ControlLabel>
+                                <ControlLabel>My Gender</ControlLabel>
                                 <Radio name="radioGroup" inline value="Male" checked={this.state.gender === "Male"} onChange={this.handleGenderChange}>Male</Radio>
                                 <Radio name="radioGroup" inline value="Female" checked={this.state.gender === "Female"} onChange={this.handleGenderChange}>Female</Radio>
                                 <Radio name="radioGroup" inline value="Other" checked={this.state.gender === "Other"} onChange={this.handleGenderChange}>Other</Radio>
                                 <Radio name="radioGroup" inline value="Secret" checked={this.state.gender === "Secret"} onChange={this.handleGenderChange}>Secret</Radio>
                             </FormGroup>
                             {formFields}
+                            <FormGroup>
+                                <ControlLabel>My Gender Orientation</ControlLabel>
+                                <Radio name="radioGroup" inline value="Heterosexual" checked={this.state.orientation === "Heterosexual"} onChange={this.handleOrientChange}>Heterosexual</Radio>
+                                <Radio name="radioGroup" inline value="Bisexual" checked={this.state.orientation === "Bisexual"} onChange={this.handleOrientChange}>Bisexual</Radio>
+                                <Radio name="radioGroup" inline value="Homosexual" checked={this.state.orientation === "Homosexual"} onChange={this.handleOrientChange}>Homosexual</Radio>
+                                <Radio name="radioGroup" inline value="Asexual" checked={this.state.orientation === "Asexual"} onChange={this.handleOrientChange}>Asexual</Radio>
+                                <Radio name="radioGroup" inline value="Secret" checked={this.state.orientation === "Secret"} onChange={this.handleOrientChange}>Secret</Radio>
+                            </FormGroup>
                             <ButtonToolbar className="float-right">
                                 <Button bsStyle="success" onClick={this.submitHandler}>Register</Button>
                                 <Button onClick={this.props.canceled}>Cancel</Button>
