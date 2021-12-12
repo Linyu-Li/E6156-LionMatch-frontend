@@ -21,7 +21,7 @@ class UserRegister extends Component {
             nameFirst: {
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'First name'
+                    placeholder: 'First name (Required)'
                 },
                 value: null,
                 validation: {
@@ -32,7 +32,7 @@ class UserRegister extends Component {
             nameLast: {
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Last name'
+                    placeholder: 'Last name (Required)'
                 },
                 value: null,
                 validation: {
@@ -43,7 +43,7 @@ class UserRegister extends Component {
             email: {
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'University Email (Required)'
+                    placeholder: 'Email (Required)'
                 },
                 value: null,
                 validation: {
